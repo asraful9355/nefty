@@ -42,6 +42,7 @@
                             <div class="form-group">
                               <label for="category_image">Category Image</label>
                               <span class="text-danger">*</span>
+                              <span class="text-danger">Image Size 180x180</span>
 
                               <div class="input-group">
                                 <div class="custom-file">

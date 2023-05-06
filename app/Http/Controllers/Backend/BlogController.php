@@ -49,7 +49,7 @@ class BlogController extends Controller
         if($request->hasfile('blog_image')){
             $image = $request->file('blog_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(324,346)->save('upload/blog/'.$name_gen);
+            Image::make($image)->resize(1200,520)->save('upload/blog/'.$name_gen);
             $blog_image = 'upload/blog/'.$name_gen;
         }else{
             $blog_image = $request->blog_images;
@@ -86,7 +86,7 @@ class BlogController extends Controller
         return redirect()->route('blog.index');
     }
 
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -121,10 +121,10 @@ class BlogController extends Controller
             } catch (Exception $e) {
 
             }
-            
+
             $image = $request->file('blog_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(324,346)->save('upload/blog/'.$name_gen);
+            Image::make($image)->resize(1200,520)->save('upload/blog/'.$name_gen);
             $blog_image = 'upload/blog/'.$name_gen;
         }else{
             $blog_image = $blog->blog_image;

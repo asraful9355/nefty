@@ -78,6 +78,7 @@
                               <div class="form-group">
                                 <label for="banner_image">Banner Image</label>
                                 <span class="text-danger">*</span>
+                                <span class="text-danger">Image Size 180x180</span>
 
                                 <div class="input-group">
                                   <div class="custom-file">

@@ -48,7 +48,7 @@ class CategoryController extends Controller
         if($request->hasfile('category_image')){
             $image = $request->file('category_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(178,182)->save('upload/category/'.$name_gen);
+            Image::make($image)->resize(180,180)->save('upload/category/'.$name_gen);
             $category_image = 'upload/category/'.$name_gen;
         }else{
             $category_image = $request->category_images;
@@ -122,7 +122,7 @@ class CategoryController extends Controller
             }
             $image = $request->file('category_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(178,182)->save('upload/category/'.$name_gen);
+            Image::make($image)->resize(180,180)->save('upload/category/'.$name_gen);
             $category_image = 'upload/category/'.$name_gen;
         }else{
             $category_image = $category->category_image;

@@ -78,6 +78,7 @@
                             <div class="form-group">
                               <label for="banner_image">Banner Image</label>
                               <span class="text-danger">*</span>
+                              <span class="text-danger">Image Size 180x180</span>
                               @error('banner_image')
                                   <span class="text-danger">{{ $message }}</span>
                               @enderror
