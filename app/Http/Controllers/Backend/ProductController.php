@@ -165,6 +165,7 @@ class ProductController extends Controller
 
         /* ========= Product Attributes Start ========= */
         $attribute_values = array();
+
         if($request->has('choice_attributes')){
             foreach ($request->choice_attributes as $key => $attribute)
             {
@@ -176,10 +177,13 @@ class ProductController extends Controller
                     array_push($data, $value);
                 }
 
+                
+
                 $item['values'] = $data;
                 array_push($attribute_values, $item);
             }
         }
+        
 
         if (!empty($request->choice_attributes)) {
             $product->attributes = json_encode($request->choice_attributes);
