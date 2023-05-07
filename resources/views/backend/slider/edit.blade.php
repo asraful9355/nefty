@@ -68,6 +68,7 @@
                               <div class="form-group">
                                 <label for="slider_img">Slider Image</label>
                                 <span class="text-danger">*</span>
+                                <span class="text-danger">Image Size 600x600</span>
                                 @error('slider_img')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

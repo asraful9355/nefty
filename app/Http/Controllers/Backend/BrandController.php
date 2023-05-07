@@ -45,7 +45,7 @@ class BrandController extends Controller
         if($request->hasfile('brand_image')){
             $image = $request->file('brand_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(210,56)->save('upload/brand/'.$name_gen);
+            Image::make($image)->resize(320,88)->save('upload/brand/'.$name_gen);
             $brand_image = 'upload/brand/'.$name_gen;
         }else{
             $brand_image = $request->brand_images;
@@ -114,7 +114,7 @@ class BrandController extends Controller
             }
             $image = $request->file('brand_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(210,56)->save('upload/brand/'.$name_gen);
+            Image::make($image)->resize(320,88)->save('upload/brand/'.$name_gen);
             $brand_image = 'upload/brand/'.$name_gen;
         }else{
             $brand_image = $brand->brand_image;
