@@ -162,6 +162,12 @@ Route::prefix('subcategory')->group(function(){
 		Route::get('/attribute_value_inactive/{id}', [AttributeController::class, 'value_inactive'])->name('attribute_value.in_active');
 		Route::post('/attribute/value/update/{id}', [AttributeController::class, 'value_update'])->name('attribute_value.update');
 		Route::get('/attribute/value/delete/{id}', [AttributeController::class, 'value_destroy'])->name('attribute_value.delete');
+
+	   // This was Ashraful doing
+
+	   Route::post('/attribute/value/insert', [AttributeController::class, 'valueStore'])->name('value.store');
+
+
     });
 
     /* ==================== Admin Product All Routes =================== */
