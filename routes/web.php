@@ -65,7 +65,7 @@ Route::get('/cart',[CartController::class,'index'])->name('cart.show');
 /* ============ Cart Get Product   ============= */
 Route::get('/get-cart-product', [CartController::class, 'getCartProduct'])->name('getcart.product');
 /* ============  Cart Increment  ============= */
-Route::get('/cart-increment/{rowId}', [CartController::class, 'cartIncrement'])->name('cart.decrement');
+Route::get('/cart-increment/{rowId}', [CartController::class, 'cartIncrement'])->name('cart.increment');
 /* ============  Cart Decrement  ============= */
 Route::get('/cart-decrement/{rowId}', [CartController::class, 'cartDecrement'])->name('cart.decrement');
 /* ============ Cart Remove   ============= */
