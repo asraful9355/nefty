@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\CampaingController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentMethodController;
+use App\Http\Controllers\backend\ShippingAreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -282,21 +283,52 @@ Route::prefix('subcategory')->group(function(){
 	});
 	/* ================  End User Orders All Route ================== */
 
-	// payment status 
+	// payment status
 	Route::post('/orders/update_payment_status', [OrderController::class, 'update_payment_status'])->name('orders.update_payment_status');
-	// delivery status 
+	// delivery status
 	Route::post('/orders/update_delivery_status', [OrderController::class, 'update_delivery_status'])->name('orders.update_delivery_status');
 
 	/*================  Divison With District Show Ajax  ==================*/
 	Route::get('/division-district/ajax/{division_id}',[OrderController::class,'getdivision'])->name('division.ajax');
 	Route::get('/district-upazilla/ajax/{district_id}',[OrderController::class,'getupazilla'])->name('upazilla.ajax');
 	/*================  District With Upazila Show Ajax  ==================*/
-	
+
 
 	/*================  Start Payment Methods Route ==================*/
 	Route::get('/payment-methods/configuration', [PaymentMethodController::class, 'index'])->name('paymentMethod.config');
 	Route::post('/payment-methods/update', [PaymentMethodController::class, 'update'])->name('paymentMethod.update');
 	/*================  End Payment Methods Route ==================*/
+
+    	/*================  Divison With District Show Ajax  ==================*/
+	Route::get('/ship-division-index',[ShippingAreaController::class,'viewDivision'])->name('viewDivision');
+	Route::post('/ship-division-store',[ShippingAreaController::class,'divisionStore'])->name('division.store');
+	Route::get('/ship-division-edit/{id}',[ShippingAreaController::class,'divisionEdit'])->name('division.edit');
+	Route::post('/ship-division-update/{id}',[ShippingAreaController::class,'divisionUpdate'])->name('division.update');
+	Route::get('/ship-division-delete/{id}',[ShippingAreaController::class,'divisionDelete'])->name('division.delete');
+
+
+
+
+
+
+
+	Route::get('/ship-districts-index',[ShippingAreaController::class,'viewDistricts'])->name('viewDistricts');
+	Route::post('/ship-districts-store',[ShippingAreaController::class,'storeDistrict'])->name('districts.store');
+    Route::get('/ship-districts-edit/{id}',[ShippingAreaController::class,'districtEdit'])->name('districts.edit');
+    Route::post('/ship-districts-update/{id}',[ShippingAreaController::class,'districtUpdate'])->name('districts.update');
+    Route::get('/ship-districts-delete/{id}',[ShippingAreaController::class,'districtDelete'])->name('districts.delete');
+
+
+	Route::get('/ship-states-index',[ShippingAreaController::class,'viewStates'])->name('viewStates');
+	Route::post('/ship-states-store',[ShippingAreaController::class,'storeState'])->name('states.store');
+    Route::get('/ship-states-edit/{id}',[ShippingAreaController::class,'editState'])->name('states.edit');
+    Route::post('/ship-states-update/{id}',[ShippingAreaController::class,'updateState'])->name('states.update');
+    Route::get('/ship-states-delete/{id}',[ShippingAreaController::class,'destroyState'])->name('states.delete');
+
+
+	/*================  District With  Show Ajax  ==================*/
+
+    Route::get('/state/division/ajax/{shipdivision_id}', [ShippingAreaController::class, 'districtAjax']);
 
 
 

@@ -282,5 +282,24 @@
       </div>
    </li>
 
+   <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#shipping_area"
+         aria-expanded="true" aria-controls="real_estate">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Shipping Area</span>
+      </a>
+      <div id="shipping_area" class="collapse
+      {{ ($route == 'viewDivision') ? 'show' : '' }}
+      {{ ($route == 'viewDistricts') ? 'show' : '' }}
+      {{ ($route == 'viewStates') ? 'show' : '' }}
+      " aria-labelledby="headingPages" data-parent="#accordionSidebar">
+         <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item {{ ($route == 'viewDivision') ? 'active' : '' }}" href="{{ route('viewDivision') }}">Shipping Division</a>
+            <a class="collapse-item {{ ($route == 'viewDistricts') ? 'active' : '' }}" href="{{ route('viewDistricts') }}">Shipping Districk</a>
+            <a class="collapse-item {{ ($route == 'viewStates') ? 'active' : '' }}" href="{{ route('viewStates') }}">Shipping States</a>
+         </div>
+      </div>
+   </li>
+
 </ul>
 <!-- End of Sidebar -->

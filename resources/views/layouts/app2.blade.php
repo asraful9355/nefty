@@ -74,7 +74,7 @@
       <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
       </a>
-      
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <!-- bootstrap tags input js -->
       <script src="{{ asset('backend/asset/bootstrap-tags/bootstrap-tagsinput.min.js ') }}" type="text/javascript"></script>
@@ -271,7 +271,7 @@
         Swal.fire({
         title: 'Are you sure?',
         text: "Delete This Data!",
-        icon: 'warning',
+        icon: 'danger',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -300,7 +300,7 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
-    }); 
+    });
 
     $(document).ready(function(){
         $('.image1').change(function(e){
@@ -310,7 +310,7 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
-    }); 
+    });
     $(document).ready(function(){
         $('#image2').change(function(e){
             var reader = new FileReader();
@@ -319,7 +319,7 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
-    }); 
+    });
     $(document).ready(function(){
         $('#image3').change(function(e){
             var reader = new FileReader();
@@ -328,7 +328,7 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
-    }); 
+    });
     $(document).ready(function(){
         $('#image4').change(function(e){
             var reader = new FileReader();
@@ -337,11 +337,11 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
-    }); 
+    });
 
-   
+
 </script>
- 
+
 @stack('footer-script')
 </body>
 </html>
