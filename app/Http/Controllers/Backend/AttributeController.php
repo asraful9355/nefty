@@ -212,19 +212,20 @@ class AttributeController extends Controller
 
     public function valueStore(Request $request){
 
-        
-        // $this->validate($request,[
-        //     // 'attribute_id' => 'required',
-        //     'value'     => 'required',
-        //   ]);
+        // dd($request->all());
+        $this->validate($request,[
+            'attribute_id' => 'required',
+            'value'     => 'required',
+          ]);
  
-        //   $attribute_value = new AttributeValue;
-        // //   $attribute_value->attribute_id = $request->attribute_id;
-        //   $attribute_value->value = $request->value;
-        //   $attribute_value->save();
-        //  Session::flash('success','Attribute Value Store Successfully.');
-        //  return redirect()->back();
-         
+          $attribute_value = new AttributeValue;
+          $attribute_value->attribute_id = $request->attribute_id;
+          $attribute_value->value = $request->value;
+          $attribute_value->save();
+  
+
+          Session::flash('success','Attribute Value Store Successfully.');
+         return redirect()->back();
     }
 
 }
