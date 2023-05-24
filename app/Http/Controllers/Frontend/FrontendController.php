@@ -39,8 +39,10 @@ class FrontendController extends Controller
         $featured_category =  Category::where('featured_category',1)->orderBy('id', 'DESC')->get();
         $hot_deals = Product::where('status',1)->where('is_deals',1)->latest()->take(4)->get();
 
+        $ashraful = User::all();
+
         $home_view = 'frontend.home';
-        return view($home_view,compact('sliders','brands','products','latest_news','banners','featured_category','hot_deals'));
+        return view($home_view,compact('sliders','brands','products','latest_news','banners','featured_category','hot_deals','ashraful'));
     } // end method
     /*=================== End Index Methoed ===================*/
 

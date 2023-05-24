@@ -51,8 +51,9 @@ class AttributeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('backend.attribute.create');
+    {   
+        $attributes = Attribute::all();
+        return view('backend.attribute.create',compact('attributes'));
     }
 
     /**
@@ -208,4 +209,22 @@ class AttributeController extends Controller
         Session::flash('success','Attribute Value Inactive Successfully.');
         return redirect()->back();
     }
+
+    public function valueStore(Request $request){
+
+        
+        // $this->validate($request,[
+        //     // 'attribute_id' => 'required',
+        //     'value'     => 'required',
+        //   ]);
+ 
+        //   $attribute_value = new AttributeValue;
+        // //   $attribute_value->attribute_id = $request->attribute_id;
+        //   $attribute_value->value = $request->value;
+        //   $attribute_value->save();
+        //  Session::flash('success','Attribute Value Store Successfully.');
+        //  return redirect()->back();
+         
+    }
+
 }

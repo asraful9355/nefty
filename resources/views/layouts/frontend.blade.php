@@ -213,7 +213,7 @@
                 }
                 /* =========== End Product Price ========= */
 
-                /* ============ Start Color ============= */ 
+                /* ============ Start Color ============= */
                 /* ============ Color empty ============= */
                 // $('select[name ="color"]').empty();
                 //console.log(data.attributes);
@@ -233,7 +233,7 @@
                             html += '<option id="attr_val_li_'+value.id+value.name+'_'+attr_value+'" class="attr_val_li_'+value.id+value.name+'" style="margin-right: 5px;">';
                             html +=  '<a id="attr_'+value.id+value.name+'_'+attr_value+'" onclick="selectAttributeModal(this.id)" style="border: 1px solid #7E7E7E;">'+attr_value+'</a>';
                         }
-                        
+
                     });
                     html +='</select>';
                     html +='</div>';
@@ -280,7 +280,7 @@
         var jsonString = JSON.stringify(options);
         //console.log(options);
 
-        // Start Message 
+        // Start Message
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -333,13 +333,13 @@
         var product_name = $('#'+id+'-product_pname').val();
         //var id = $('#product_product_id').val();
         //alert(id);
-        // var color = $('#color option:selected').val(); 
+        // var color = $('#color option:selected').val();
         // var size = $('#size option:selected').val();
         var quantity = 1;
 
         // alert(product_name);
 
-        // Start Message 
+        // Start Message
         const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -391,7 +391,7 @@
 </script>
 
 <script type="text/javascript">
-    /* ============= Start MiniCart Add ========== */ 
+    /* ============= Start MiniCart Add ========== */
     function miniCart(){
         $.ajax({
             type: 'GET',
@@ -453,10 +453,13 @@
            dataType: 'json',
            success:function(data){
 
-            miniCart();
             cart();
+            miniCart();
+            couponCalculation();
 
-            // Start Message 
+
+
+            // Start Message
             const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',
@@ -538,7 +541,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         `
                     });
 
@@ -564,9 +567,12 @@
             // console.log(data)
             cart();
             miniCart();
+            couponCalculation();
           }
       });
     }
+
+    
     /* ==================== End  cartIncrement ================== */
 
     /* ==================== Start  Cart Decrement ================== */
@@ -579,6 +585,7 @@
                 // console.log(data)
                 cart();
                 miniCart();
+                couponCalculation()
               }
           });
         }
@@ -593,9 +600,10 @@
             success:function(data){
             cart();
             miniCart();
+            couponCalculation()
 
 
-            // Start Message 
+            // Start Message
             const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',
@@ -615,7 +623,7 @@
                     title: data.error
                 })
             }
-            // End Message 
+            // End Message
             }
         });
     }
@@ -625,7 +633,7 @@
 
 <!--==================== Start Add To Wishlist Product ===================== -->
 <script type="text/javascript">
-  
+
   function addToWishList(product_id){
 
     $.ajax({
@@ -635,7 +643,7 @@
 
       success:function(data){
 
-        // Start Message 
+        // Start Message
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -676,7 +684,7 @@
             location.reload();
 
             $('#compare_list').html(data);
-            // Start Message 
+            // Start Message
             const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',
@@ -719,11 +727,11 @@
             couponCalculation();
             $('#couponField').hide();
 
-            // Start Message 
+            // Start Message
             const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',
-                  
+
                   showConfirmButton: false,
                   timer: 3000
                 })
@@ -740,7 +748,7 @@
                     title: data.error
                 })
             }
-            // End Message 
+            // End Message
         }
      })
     }
@@ -810,11 +818,11 @@
 
                 couponCalculation();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                       toast: true,
                       position: 'top-end',
-                      
+
                       showConfirmButton: false,
                       timer: 3000
                     })
@@ -831,9 +839,9 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
 
-               
+
             }
         })
     }

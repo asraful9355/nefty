@@ -50,7 +50,7 @@ class SliderController extends Controller
          if($request->hasfile('slider_img')){
             $image = $request->slider_img;
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(2300,800)->save('upload/slider/'.$name_gen);
+            Image::make($image)->resize(600,600)->save('upload/slider/'.$name_gen);
             $save_url = 'upload/slider/'.$name_gen;
         }else{
             $save_url = '';
@@ -135,7 +135,7 @@ class SliderController extends Controller
             }
             $image = $request->file('slider_img');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(1920,1050)->save('upload/slider/'.$name_gen);
+            Image::make($image)->resize(600,600)->save('upload/slider/'.$name_gen);
             $slider_img = 'upload/slider/'.$name_gen;
         }else{
             $slider_img = $slider->slider_img;

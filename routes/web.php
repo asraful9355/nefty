@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\AjaxController;
 use Illuminate\Support\Facades\Route;
 //======= Use A Frontend Controller =======*/
 use App\Http\Controllers\Frontend\UserController;
@@ -65,7 +66,7 @@ Route::get('/cart',[CartController::class,'index'])->name('cart.show');
 /* ============ Cart Get Product   ============= */
 Route::get('/get-cart-product', [CartController::class, 'getCartProduct'])->name('getcart.product');
 /* ============  Cart Increment  ============= */
-Route::get('/cart-increment/{rowId}', [CartController::class, 'cartIncrement'])->name('cart.decrement');
+Route::get('/cart-increment/{rowId}', [CartController::class, 'cartIncrement'])->name('cart.increment');
 /* ============  Cart Decrement  ============= */
 Route::get('/cart-decrement/{rowId}', [CartController::class, 'cartDecrement'])->name('cart.decrement');
 /* ============ Cart Remove   ============= */
@@ -82,10 +83,10 @@ Route::get('/page/{slug}',[FrontendController::class, 'pageAbout'])->name('page.
 
 /* =============== Product Search  ============= */
 Route::post('/product/search', [FrontendController::class, 'productSearch'])->name('product.search');
-/* =============== Advance Search ============= */ 
+/* =============== Advance Search ============= */
 Route::post('search-product', [FrontendController::class, 'advanceProduct']);
 
-/* =============== Product Shop ============= */ 
+/* =============== Product Shop ============= */
 Route::get('/product/shop',[ProductController::class,'index'])->name('product.shop');
 
 /* ================ START ADD TO WISHLIST WITH AJAX ============== */
@@ -93,11 +94,11 @@ Route::post('/add-to-wishlist/{product_id}',[WishlistController::class, 'create'
 /* ================= End ADD TO WISHLIST WITH AJAX ================ */
 
 
-/* ================ START ADD TO COMPARE WITH AJAX ============== */ 
+/* ================ START ADD TO COMPARE WITH AJAX ============== */
 Route::get('/compare',[CompareController::class, 'index'])->name('compare');
 Route::get('/compare/reset',[CompareController::class, 'reset'])->name('compare.reset');
 Route::post('/compare/addToCompare/{id}',[CompareController::class, 'addToCompare'])->name('compare.addToCompare');
-/* ================ END ADD TO COMPARE WITH AJAX ============== */ 
+/* ================ END ADD TO COMPARE WITH AJAX ============== */
 
 /* ================= START COUPON OPTIONS ====================== */
 Route::post('/coupon-apply',[CouponController::class, 'CouponApply']);
@@ -105,39 +106,49 @@ Route::get('/coupon-calculation', [CouponController::class, 'CouponCalculation']
 Route::get('/coupon-remove', [CouponController::class, 'CouponRemove']);
 /* ================= END COUPON OPTIONS ====================== */
 
-/*================   START DIVISION WITH DISTRICT/UPAZILA ROUTE   ==================*/
-Route::get('/division-district/ajax/{division_id}',[CheckoutController::class,'getdivision'])->name('division.ajax');
-Route::get('/district-upazilla/ajax/{district_id}',[CheckoutController::class,'getupazilla'])->name('upazilla.ajax');		
-/*================   END DIVISION WITH DISTRICT/UPAZILA ROUTE   ==================*/
+// /*================   START DIVISION WITH DISTRICT/UPAZILA ROUTE   ==================*/
+// Route::get('/division-district/ajax/{division_id}',[CheckoutController::class,'getdivision'])->name('division.ajax');
+// Route::get('/district-upazilla/ajax/{district_id}',[CheckoutController::class,'getupazilla'])->name('upazilla.ajax');
+// /*================   END DIVISION WITH DISTRICT/UPAZILA ROUTE   ==================*/
 
 
-/* =============== Start Category WiseProduct Show Route ============= */ 
+/* =============== Start Category WiseProduct Show Route ============= */
 Route::get('/category/product/{slug}', [FrontendController::class, 'CatWiseProduct'])->name('product.category');
 Route::get('/subcategory/product/{slug}', [FrontendController::class, 'SubCatWiseProduct'])->name('product.subcategory');
 Route::get('/childcategory/product/{slug}', [FrontendController::class, 'ChildCatWiseProduct'])->name('product.childcategory');
 /* =============== End Category WiseProduct Show Route ============= */
 
 
-/* =============== Start Payment Getway All Route ============= */ 
+/* =============== Start Payment Getway All Route ============= */
 Route::post('/checkout/payment',[CheckoutController::class,'payment'])->name('checkout.payment');
 Route::post('/checkout/store',[CheckoutController::class,'store'])->name('checkout.store');
 Route::get('/checkout/success/{id}',[CheckoutController::class,'show'])->name('checkout.success');
-/* =============== End Payment Getway All Route ============= */ 
+/* =============== End Payment Getway All Route ============= */
 
 
 /* ====================  Start User Order Route ================== */
 Route::get('/user/orders/{invoice_no}',[UserController::class, 'orderView'])->name('order.view');
 /* ====================  End User Order Route ================== */
 
-/* =============== Hot Deals  ============= */ 
+/* =============== Hot Deals  ============= */
 Route::get('/hot-deals', [FrontendController::class, 'hotDeals'])->name('hot_deals.all');
 
 
 /// Product Quick View Modal with Ajax ////
 Route::get('/product/quick/view/modal/{id}', [FrontendController::class, 'ProductQuickViewAjax']);
 
+// ajax er jonne controller akhan theke start 
+Route::get('/banner/all', [AjaxController::class, 'bannerAll']);
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';
+
+
 
 
