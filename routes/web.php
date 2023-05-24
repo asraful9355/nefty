@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\AjaxController;
 use Illuminate\Support\Facades\Route;
 //======= Use A Frontend Controller =======*/
 use App\Http\Controllers\Frontend\UserController;
@@ -136,8 +137,18 @@ Route::get('/hot-deals', [FrontendController::class, 'hotDeals'])->name('hot_dea
 /// Product Quick View Modal with Ajax ////
 Route::get('/product/quick/view/modal/{id}', [FrontendController::class, 'ProductQuickViewAjax']);
 
+// ajax er jonne controller akhan theke start 
+Route::get('/banner/all', [AjaxController::class, 'bannerAll']);
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';
+
+
 
 

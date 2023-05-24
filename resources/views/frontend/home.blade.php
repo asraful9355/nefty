@@ -1057,4 +1057,22 @@
 		<!--end bottom products section-->
     </div>
 </div>
+
+<script>
+        $.ajax({
+            type: 'GET',
+            url: '/banner/all',
+            dataType:'json',
+            success:function(response){
+                // alert(response);
+				var data = ""
+				$.each(response,function(key,value){
+					data = data "</th>"+value.id+"</td>"
+				})
+
+              
+            }
+        });</script>
+
+
 @endsection

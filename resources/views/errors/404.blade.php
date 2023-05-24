@@ -153,9 +153,9 @@ h1{
               <div class="right-down"></div>
               <div class="left"></div>
               <div class="right"></div>
+              
           </div>
         </div>
-        
         <div class="cog-wheel2"> 
           <div class="cog2">
               <div class="top"></div>
