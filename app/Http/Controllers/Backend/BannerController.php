@@ -96,8 +96,12 @@ class BannerController extends Controller
     public function edit($id)
     {
 
+
         $banner = Banner::find($id);
         return view('backend.banner.edit', compact('banner'));
+
+    $banner = Banner::find($id);
+    return view('backend.banner.edit', compact('banner'));
     } // End Edit Mathod
 
     public function view($id)

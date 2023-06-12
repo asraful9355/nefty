@@ -52,7 +52,7 @@
                             <hr>
                             <div class="row">
 
-                               <div class="col-md-12">
+                               {{-- <div class="col-md-12">
                                   <div class="form-group">
                                     <label for="name">Attribute Select: <span class="text-danger">*</span></label>
                                     <select name="attribute_id"  id="attribute_id" class="form-control">
@@ -60,7 +60,7 @@
                                         <option value="{{ $att->id }}">{{$att->name}}</option>
                                        @endforeach
                                     </select>
-                                  </div>
+                                  </div> --}}
                                </div>
 
                                <div class="col-md-12">

@@ -7,7 +7,7 @@
                     <div class="footer-section1 mb-3">
                         <h6 class="mb-3 text-uppercase">Contact Info</h6>
                         <div class="address mb-3">
-                            <p class="mb-0 text-uppercase text-white">Address</p>
+                            <p class="mb-0 text-uppercase text-white">Address :</p>
                             <p class="mb-0 font-12">{{ get_setting('business_address')->value ?? 'null' }}</p>
                         </div>
                         <div class="phone mb-3">

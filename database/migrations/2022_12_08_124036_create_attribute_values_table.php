@@ -21,6 +21,8 @@ class CreateAttributeValuesTable extends Migration
             $table->bigInteger('created_by')->contrained('users')->onDelete('cascade');
             $table->timestamps();
         });
+
+        
     }
 
     /**
