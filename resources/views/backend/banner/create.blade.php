@@ -74,11 +74,21 @@
                                 @enderror
                               </div>
                            </div>
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="button_url">Butoton URL : <span class="text-danger">*</span></label>
+                                <input type="text" name="button_url" value="" id="button_url" class="form-control" placeholder="Write Button Name Bn">
+                                @error('button_url')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                              </div>
+                           </div>
+
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="banner_image">Banner Image</label>
                                 <span class="text-danger">*</span>
-                                <span class="text-danger">Image Size 180x180</span>
+                                <span class="">Image Size 180x180</span>
 
                                 <div class="input-group">
                                   <div class="custom-file">

@@ -41,9 +41,11 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title_en' => 'required',
+            'title_en' => 'required|string|max:22',
+            'title_bn' => 'nullable|string|max:22',
             'slider_url' => 'required',
-            'description_en' => 'required',
+            'description_en' => 'required|string',
+            'description_bn' => 'nullable|string',
             'slider_img' => 'required',
         ]);
 
@@ -124,6 +126,14 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $slider = Slider::find($id);
+
+        $this->validate($request,[
+            'title_en' => 'required|string|max:22',
+            'title_bn' => 'nullable|string|max:22',
+            'slider_url' => 'required',
+            'description_en' => 'required|string',
+            'description_bn' => 'nullable|string',
+        ]);
 
         if($request->hasfile('slider_img')){
             try {

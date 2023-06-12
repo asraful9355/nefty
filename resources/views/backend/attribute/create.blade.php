@@ -48,9 +48,10 @@
                    <div class="col-md-12">
                       <div class="card shadow mb-4">
                          <div class="card-body">
-                            <h4>Attribute Create</h4>
+                            <h4>Attribute Value Create</h4>
                             <hr>
                             <div class="row">
+
                                <div class="col-md-12">
                                   <div class="form-group">
                                     <label for="name">Attribute Select: <span class="text-danger">*</span></label>
@@ -61,6 +62,7 @@
                                     </select>
                                   </div>
                                </div>
+
                                <div class="col-md-12">
                                   <div class="form-group">
                                     <label for="name">Name: <span class="text-danger">*</span></label>
@@ -87,4 +89,6 @@
    </div>
    <!-- End of Main Content -->
 </div>
+
+
 @endsection

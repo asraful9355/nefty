@@ -21,15 +21,15 @@
           <table class="table table-bordered">
              <tr>
                 <td>Category Name En</td>
-                <td>{{ $subcategory->category->category_name_en }}</td>
+                <td>{{ $subcategory->category->category_name_en ?? 'NULL'}}</td>
              </tr>
              <tr>
                 <td>Subcategory Name En</td>
-                <td>{{ $subcategory->subcategory_name_en }}</td>
+                <td>{{ $subcategory->subcategory_name_en ?? 'NULL'}}</td>
              </tr>
              <tr>
                 <td>Subcategory Name Bn</td>
-                <td>{{ $subcategory->subcategory_name_bn }}</td>
+                <td>{{ $subcategory->subcategory_name_bn ?? 'NULL'}}</td>
              </tr>
 
              <td>Status</td>

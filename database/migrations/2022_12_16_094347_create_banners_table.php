@@ -22,6 +22,7 @@ class CreateBannersTable extends Migration
             $table->string('banner_slug_en',100)->nullable();;
             $table->string('button_name_en', 100)->nullable();
             $table->string('button_name_bn', 100)->nullable();
+            $table->string('button_url', 100)->nullable();
             $table->string('banner_image');
             $table->unsignedTinyInteger('status')->default(1)->comment('1=>Active, 0=>Inactive');
             $table->timestamps();

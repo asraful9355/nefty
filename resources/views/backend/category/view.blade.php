@@ -21,11 +21,11 @@
           <table class="table table-bordered">
              <tr>
                 <td>Category Name En</td>
-                <td>{{ $category->category_name_en }}</td>
+                <td>{{ $category->category_name_en ?? 'NULL' }}</td>
              </tr>
              <tr>
                 <td>Category Name Bn</td>
-                <td>{{ $category->category_name_bn }}</td>
+                <td>{{ $category->category_name_bn ?? 'NULL'}}</td>
              </tr>
 
              <td>Status</td>

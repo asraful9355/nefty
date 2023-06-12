@@ -9,7 +9,7 @@ class AttributeValue extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function attribute(){
         return $this->belongsTo(Attribute::class,'attribute_id','id');

@@ -111,7 +111,7 @@
                                         @else
                                             {{ $banner->banner_description_en }}
                                         @endif
-                                        </p>  <a href="javascript:;" class="btn btn-light btn-ecomm">
+                                        </p>  <a href="{{ $banner->button_url }}" class="btn btn-light btn-ecomm">
                                         @if(session()->get('language') == 'bangla')
                                             {{ $banner->button_name_bn }}
                                         @else
@@ -299,7 +299,7 @@
 													<span class="text-white fs-5">৳{{ $product->regular_price }}</span>
 												</div>
 											@endif
-					                        <div class="cursor-pointer ms-auto">    
+					                        <div class="cursor-pointer ms-auto">
 												<i class="bx bxs-star text-white"></i>
 					                            <i class="bx bxs-star text-white"></i>
 					                            <i class="bx bxs-star text-white"></i>
@@ -407,7 +407,7 @@
 													<span class="text-white fs-5">৳{{ $product->regular_price }}</span>
 												</div>
 											@endif
-					                        <div class="cursor-pointer ms-auto">    
+					                        <div class="cursor-pointer ms-auto">
 												<i class="bx bxs-star text-white"></i>
 					                            <i class="bx bxs-star text-white"></i>
 					                            <i class="bx bxs-star text-white"></i>

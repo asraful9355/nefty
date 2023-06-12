@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Product;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Session;
-use App\Models\District;
-use App\Models\Upazilla;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\ShipStates;
+use App\Models\OrderDetail;
 use App\Models\SmsTemplate;
 use App\Utility\SmsUtility;
-use App\Utility\SendSMSUtility;
-use App\Models\Order;
-use App\Models\OrderDetail;
 use App\Models\ProductStock;
+use App\Models\ShipDivision;
+use Illuminate\Http\Request;
+use App\Models\ShipDistricts;
+use Illuminate\Support\Carbon;
+use App\Utility\SendSMSUtility;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -33,22 +34,24 @@ class CheckoutController extends Controller
 
         $cartQty = Cart::count();
         $cartTotal = Cart::total();
+        $divisions = ShipDivision::all();
 
-        return view('frontend.checkout.index',compact('carts','cartQty','cartTotal'));
+        return view('frontend.checkout.index',compact('carts','cartQty','cartTotal', 'divisions'));
     } // end method
     /* ========= End Checkout Index Method ============ */
 
      /* ============= Start getdivision Method ============== */
-    public function getdivision($division_id){
-    $division = District::where('division_id', $division_id)->orderBy('district_name_en','ASC')->get();
+    public function getdistrict($division_id){
+    $district = ShipDistricts::where('shipdivision_id', $division_id)->orderBy('district_name','ASC')->get();
 
-        return json_encode($division);
+        return json_encode($district);
     }
     /* ============= End getdivision Method ============== */
 
     /* ============= Start getupazilla Method ============== */
     public function getupazilla($district_id){
-        $upazilla = Upazilla::where('district_id', $district_id)->orderBy('name_en','ASC')->get();
+        $upazilla = ShipStates::where('shipdistrict_id', $district_id)->orderBy('state_name','ASC')->get();
+        // $upazilla = ShipStates::all();
 
         return json_encode($upazilla);
     }
@@ -90,7 +93,7 @@ class CheckoutController extends Controller
                 return $aamarpay->index();
             }
         }
-        
+
         return view('frontend.checkout.payment', compact('payment_method', 'total_amount', 'invoice_no'));
     }
     /* ============= End Payment Method ============== */
@@ -100,10 +103,11 @@ class CheckoutController extends Controller
     {
         $carts = Cart::content();
         // dd($carts);
+        dd($request->all(), $carts);
 
         if($carts->isEmpty()){
             $notification = array(
-                'message' => 'Your cart is empty.', 
+                'message' => 'Your cart is empty.',
                 'alert-type' => 'error'
             );
             return redirect()->route('home')->with($notification);
@@ -154,8 +158,8 @@ class CheckoutController extends Controller
                     array_push($variations, $item);
                 }
                 OrderDetail::insert([
-                    'order_id' => $order->id, 
-                    'product_sales_quantity' => $order->id, 
+                    'order_id' => $order->id,
+                    'product_sales_quantity' => $order->id,
                     'product_id' => $cart->id,
                     'is_varient' => 1,
                     'variation' => json_encode($variations, JSON_UNESCAPED_UNICODE),
@@ -177,7 +181,7 @@ class CheckoutController extends Controller
             }else{
                 OrderDetail::insert([
                     'order_id' => $order->id,
-                    'product_sales_quantity' => $order->id, 
+                    'product_sales_quantity' => $order->id,
                     'product_id' => $cart->id,
                     'is_varient' => 0,
                     'qty' => $cart->qty,
@@ -194,7 +198,7 @@ class CheckoutController extends Controller
         Cart::destroy();
 
         $notification = array(
-            'message' => 'Your Order Successfully.', 
+            'message' => 'Your Order Successfully.',
             'alert-type' => 'success'
         );
         return redirect()->route('checkout.success', $order->invoice_no)->with($notification);
@@ -207,7 +211,7 @@ class CheckoutController extends Controller
         $order = Order::where('invoice_no', $id)->first();
 
         $notification = array(
-            'message' => 'Your Order Successfully.', 
+            'message' => 'Your Order Successfully.',
             'alert-type' => 'success'
         );
 
@@ -215,5 +219,5 @@ class CheckoutController extends Controller
     }
     /* ============= End Show Method ============== */
 
-    
+
 }

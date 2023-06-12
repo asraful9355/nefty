@@ -106,8 +106,8 @@ Route::get('/coupon-remove', [CouponController::class, 'CouponRemove']);
 /* ================= END COUPON OPTIONS ====================== */
 
 // /*================   START DIVISION WITH DISTRICT/UPAZILA ROUTE   ==================*/
-// Route::get('/division-district/ajax/{division_id}',[CheckoutController::class,'getdivision'])->name('division.ajax');
-// Route::get('/district-upazilla/ajax/{district_id}',[CheckoutController::class,'getupazilla'])->name('upazilla.ajax');
+Route::get('/division-district/ajax/{division_id}',[CheckoutController::class,'getdistrict']);
+Route::get('/district-upazilla/ajax/{district_id}',[CheckoutController::class,'getupazilla']);
 // /*================   END DIVISION WITH DISTRICT/UPAZILA ROUTE   ==================*/
 
 

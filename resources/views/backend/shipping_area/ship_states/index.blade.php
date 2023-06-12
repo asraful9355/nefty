@@ -36,7 +36,8 @@
 
                                                     <td>
                                                         <a href="{{ route('states.edit', $item->id) }}"
-                                                            class="btn btn-primary btn-sm"><i id="#Modal{{ $item->id }}" class="fas fa-edit"></i></a>
+                                                            class="btn btn-primary btn-sm"><i id="#Modal{{ $item->id }}"
+                                                                class="fas fa-edit"></i></a>
 
                                                         <a href="{{ route('states.delete', $item->id) }}"class="btn btn-danger btn-sm"
                                                             title="Delete Data" id="delete"><i
@@ -75,7 +76,7 @@
                                                 class="text-danger">*</span></label>
                                         <select name="shipdistrict_id" required="" class="form-control"
                                             aria-invalid="false">
-                                                <option value="" selected="" disabled="">Select District</option>
+                                            <option value="" selected="" disabled="">Select District</option>
                                         </select>
                                         @error('shipdistrict_id')
                                             <span class="text-danger">{{ $message }}</span>
@@ -86,9 +87,8 @@
                                     <div class="form-group">
                                         <label for="state_name">State Name (English): <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" name="state_name" value=""
-                                            id="state_name" class="form-control"
-                                            placeholder="Write state name">
+                                        <input type="text" name="state_name" value="" id="state_name"
+                                            class="form-control" placeholder="Write state name">
                                         @error('state_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -107,29 +107,30 @@
         </div>
         <!-- End of Main Content -->
     </div>
-<!-- Category Ajax -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('select[name="shipdivision_id"]').on('change', function(){
-			var shipdivision_id = $(this).val();
-			if(shipdivision_id) {
-                console.log(shipdivision_id);
-				$.ajax({
-					url: "{{  url('/admin/state/division/ajax') }}/"+shipdivision_id,
-					type:"GET",
-					dataType:"json",
-					success:function(data) {
-					var d =$('select[name="shipdistrict_id"]').empty();
-						$.each(data, function(key, value){
-							$('select[name="shipdistrict_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
-						});
-					},
-				});
-			} else {
-				alert('danger');
-			}
-		});
-	});
-</script>
-
+    <!-- Category Ajax -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="shipdivision_id"]').on('change', function() {
+                var shipdivision_id = $(this).val();
+                if (shipdivision_id) {
+                    console.log(shipdivision_id);
+                    $.ajax({
+                        url: "{{ url('/admin/state/division/ajax') }}/" + shipdivision_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            var d = $('select[name="shipdistrict_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="shipdistrict_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .district_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
 @endsection

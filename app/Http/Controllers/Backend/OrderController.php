@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\User;
-use App\Models\Address;
-use App\Models\District;
-use App\Models\Upazilla;
-use Session;
 use PDF;
+use Session;
+
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Address;
+use App\Models\ShipStates;
+use App\Models\ShipDivision;
+
+use App\Models\OrderDetail;
+use Illuminate\Http\Request;
+use App\Models\ShipDistricts;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
@@ -26,6 +28,8 @@ class OrderController extends Controller
         $date = $request->date;
         $delivery_status = null;
         $payment_status = null;
+
+
 
         //dd($request);
 
@@ -110,8 +114,12 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
-        
-        return view('backend.sales.all_orders.show', compact('order'));
+
+        $divisions = ShipDivision::all();
+        $districts = ShipDistricts::all();
+        $upazillas = ShipStates::all();
+
+        return view('backend.sales.all_orders.show', compact('order', 'divisions', 'districts', 'upazillas'));
     }
 
     /**
@@ -165,7 +173,7 @@ class OrderController extends Controller
         $order->delete();
 
         $notification = array(
-            'message' => 'Order Deleted Successfully.', 
+            'message' => 'Order Deleted Successfully.',
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
@@ -198,7 +206,7 @@ class OrderController extends Controller
 
     /* ============= Start getdivision Method ============== */
     public function getdivision($division_id){
-        $division = District::where('division_id', $division_id)->orderBy('district_name_en','ASC')->get();
+        $division = ShipDistricts::where('shipdivision_id', $division_id)->orderBy('district_name','ASC')->get();
 
         return json_encode($division);
     }
@@ -206,7 +214,7 @@ class OrderController extends Controller
 
     /* ============= Start getupazilla Method ============== */
     public function getupazilla($district_id){
-        $upazilla = Upazilla::where('district_id', $district_id)->orderBy('name_en','ASC')->get();
+        $upazilla = ShipStates::where('shipdistrict_id', $district_id)->orderBy('state_name','ASC')->get();
 
         return json_encode($upazilla);
     }
@@ -223,4 +231,6 @@ class OrderController extends Controller
         return $pdf->download('invoice.pdf');
     } // end method
     /* ============= End invoice_download Method ============== */
+
+
 }

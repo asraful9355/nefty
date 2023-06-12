@@ -51,7 +51,7 @@ class AttributeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $attributes = Attribute::all();
         return view('backend.attribute.create',compact('attributes'));
     }
@@ -217,12 +217,13 @@ class AttributeController extends Controller
             'attribute_id' => 'required',
             'value'     => 'required',
           ]);
- 
-          $attribute_value = new AttributeValue;
-          $attribute_value->attribute_id = $request->attribute_id;
-          $attribute_value->value = $request->value;
-          $attribute_value->save();
-  
+
+          AttributeValue::updateOrCreate([
+            'attribute_id' => $request->attribute_id,
+            'value' => $request->value,
+            'created_by' => Auth::guard('admin')->user()->id,
+            'created_at' => Carbon::now(),
+        ]);
 
           Session::flash('success','Attribute Value Store Successfully.');
          return redirect()->back();

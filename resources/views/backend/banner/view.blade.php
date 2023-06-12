@@ -44,6 +44,10 @@
                         <td>{{ $banner->button_name_bn }}</td>
                      </tr>
                      <tr>
+                        <td>Button Name Bn</td>
+                        <td>{{ $banner->button_url }}</td>
+                     </tr>
+                     <tr>
                         <td>banner Image</td>
                         <td><img src="{{ asset($banner->banner_image) }}" alt="" style="height:70px; width:80px;"></td>
                      </tr>

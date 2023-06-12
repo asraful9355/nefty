@@ -62,6 +62,7 @@
                                         <select name="shipdivision_id" required="" class="form-control"
                                             aria-invalid="false">
                                             @foreach ($divisions as $division)
+                                            <option disabled selected > select division</option>
                                                 <option value="{{ $division->id }}">{{ $division->division_name }}</option>
                                             @endforeach
                                         </select>
@@ -71,7 +72,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="district_name">District Name (English): <span
+                                        <label for="district_name">Ruhul District Name (English): <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" name="district_name" value="" id="district_name"
                                             class="form-control" placeholder="Write division name">

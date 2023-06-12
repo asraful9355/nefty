@@ -158,8 +158,16 @@ class CategoryController extends Controller
      */
     public function delete($id)
     {    $category = Category::find($id);
-         $category_image = $category->category_image;
-         unlink($category_image);
+
+        try {
+            if(file_exists($category->category_image)){
+                unlink($category->category_image);
+            }
+        } catch (Exception $e) {
+
+        }
+        //  $category_image = $category->category_image;
+        //  unlink($category_image);
          $category->delete();
          Session::flash('success','Category Deleted Successfully');
          return redirect()->route('category.index');

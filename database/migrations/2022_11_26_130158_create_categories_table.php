@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category_name_en',100)->nullable();
             $table->string('category_name_bn',100)->nullable();
             $table->string('slug',100);
-            $table->string('category_image');
+            $table->string('category_image')->nullable();
             $table->boolean('featured_category')->default(0)->nullable();
             $table->unsignedTinyInteger('status')->default(1)->comment('1=>Active, 0=>Inactive');
             $table->timestamps();

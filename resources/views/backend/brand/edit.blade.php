@@ -42,7 +42,7 @@
                             <div class="form-group">
                               <label for="brand_image">Brand Image</label>
                               <span class="text-danger">*</span>
-                                <span class="text-danger">Image Size 320x88</span>
+                                <span class="">Image Size 320x88</span>
                               @error('brand_image')
                                   <span class="text-danger">{{ $message }}</span>
                               @enderror

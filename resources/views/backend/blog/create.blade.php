@@ -42,7 +42,7 @@
                               <div class="form-group">
                                 <label for="blog_image">Blog Image</label>
                                 <span class="text-danger">*</span>
-                                <span class="text-danger">Image Size 1200x520</span>
+                                <span class="">Image Size 1200x520</span>
 
                                 <div class="input-group">
                                   <div class="custom-file">

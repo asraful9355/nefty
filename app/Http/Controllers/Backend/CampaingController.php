@@ -43,7 +43,7 @@ class CampaingController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name_en' => 'required',
+            'name_en' => 'required|string',
             'campaing_image' => 'required',
         ]);
 
@@ -51,7 +51,7 @@ class CampaingController extends Controller
             $image = $request->file('campaing_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->save('upload/campaing/'.$name_gen);
-            $save_url = 'upload/campaing/'.$name_gen; 
+            $save_url = 'upload/campaing/'.$name_gen;
         }else{
             $save_url = '';
         }
@@ -62,7 +62,7 @@ class CampaingController extends Controller
         // dd($date_var[0]);
         $campaing->flash_start  = $date_var[0];
         $campaing->flash_end    = $date_var[1];
-        
+
         $campaing->name_en = $request->name_en;
         if($request->name_bn == ''){
             $campaing->name_bn = $request->name_en;
@@ -158,7 +158,7 @@ class CampaingController extends Controller
                     unlink($campaing->campaing_image);
                 }
             } catch (Exception $e) {
-                
+
             }
             $campaing_image = $request->campaing_image;
             $img = time().$campaing_image->getClientOriginalName();
@@ -173,7 +173,7 @@ class CampaingController extends Controller
         // dd($date_var[0]);
         $campaing->flash_start  = $date_var[0];
         $campaing->flash_end    = $date_var[1];
-        
+
         $campaing->name_en = $request->name_en;
         if($request->name_bn == ''){
             $campaing->name_bn = $request->name_en;
@@ -240,13 +240,13 @@ class CampaingController extends Controller
                 unlink($campaing->campaing_image);
             }
         } catch (Exception $e) {
-            
+
         }
-        
+
         $campaing->delete();
 
         $notification = array(
-            'message' => 'Campaing Deleted Successfully.', 
+            'message' => 'Campaing Deleted Successfully.',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

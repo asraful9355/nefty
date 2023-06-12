@@ -2,8 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Models\User;
+use App\Models\Product;
+use App\Models\ShipStates;
+use App\Models\ShipDivision;
+use App\Models\ShipDistricts;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -27,15 +33,18 @@ class Order extends Model
         return $this->belongsTo('App\Models\OrderDetail');
     }
 
-    public function division(){
-        return $this->belongsTo(Division::class,'division_id','id');
+    public function division()
+    {
+        return $this->belongsTo(ShipDivision::class,'division_id','id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(ShipDistricts::class,'district_id','id');
     }
 
-    public function district(){
-        return $this->belongsTo(District::class,'district_id','id');
+    public function upazilla()
+    {
+        return $this->belongsTo(ShipStates::class,'upazilla_id','id');
     }
 
-    public function upazilla(){
-        return $this->belongsTo(Upazilla::class,'upazilla_id','id');
-    }
 }
