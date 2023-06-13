@@ -11,33 +11,20 @@ use Auth;
 
 class CouponController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $coupon = Coupon::latest()->get();
         return view('backend.coupon.index', compact('coupon'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('backend.coupon.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -50,7 +37,7 @@ class CouponController extends Controller
 
         if($coupon){
             Session::flash('warning','Coupon already Created.');
-            return redirect()->back(); 
+            return redirect()->back();
         }else{
             $coupon = Coupon::insert([
                 'coupon_name' => strtoupper($request->coupon_name),
@@ -64,27 +51,16 @@ class CouponController extends Controller
         return redirect()->route('coupon.index');
     }
 
-  
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function edit($id)
     {
         $coupons = Coupon::find($id);
         return view('backend.coupon.edit', compact('coupons'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         $this->validate($request,[
@@ -123,7 +99,7 @@ class CouponController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    
+
     public function active($id){
 
         $coupon = Coupon::find($id);

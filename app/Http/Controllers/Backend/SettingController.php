@@ -11,68 +11,15 @@ use Image;
 
 class SettingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        
+
         $settings = Setting::find(1);
         return view('backend.setting.index', compact('settings'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request)
     {
         // dd($request->types);
@@ -100,7 +47,7 @@ class SettingController extends Controller
                     unlink($setting->value);
                 }
             } catch (Exception $e) {
-                
+
             }
             $setting->value = $save_url_logo;
 
@@ -120,7 +67,7 @@ class SettingController extends Controller
                     unlink($setting->value);
                 }
             } catch (Exception $e) {
-                
+
             }
             $setting->value = $save_url_footer_logo;
 
@@ -133,34 +80,34 @@ class SettingController extends Controller
             $favicon_save = time().$favicon->getClientOriginalName();
             $favicon->move('upload/setting/favicon/',$favicon_save);
             $save_url_favicon = 'upload/setting/favicon/'.$favicon_save;
-            
+
             $setting = Setting::where('name', 'site_favicon')->first();
             try {
                 if(file_exists($setting->value)){
                     unlink($setting->value);
                 }
             } catch (Exception $e) {
-                
+
             }
             $setting->value = $save_url_favicon;
 
             $setting->save();
         }
-        
+
         //Setting Contact Update
         if ($request->file('site_contact_logo')) {
             $favicon = $request->file('site_contact_logo');
             $favicon_save = time().$favicon->getClientOriginalName();
             $favicon->move('upload/setting/contact/',$favicon_save);
             $save_url_favicon = 'upload/setting/contact/'.$favicon_save;
-            
+
             $setting = Setting::where('name', 'site_contact_logo')->first();
             try {
                 if(file_exists($setting->value)){
                     unlink($setting->value);
                 }
             } catch (Exception $e) {
-                
+
             }
             $setting->value = $save_url_favicon;
 

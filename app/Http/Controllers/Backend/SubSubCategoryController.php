@@ -12,21 +12,13 @@ use Session;
 
 class SubSubCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {   $subsubcategories = Subsubcategory::all();
         return view('backend.category.subsubcategory.index',compact('subsubcategories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $categories = Category::orderBy('category_name_en','ASC')->get();
@@ -37,16 +29,7 @@ class SubSubCategoryController extends Controller
     }
 
 
-  //  json File
 
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {   $this->validate($request,[
             'sub_subcategory_name_en'=>'required',
@@ -73,12 +56,7 @@ class SubSubCategoryController extends Controller
        return redirect()->route('subsubcategory.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function view($id)
     {
         $subsubcategory = Subsubcategory::find($id);
@@ -98,13 +76,7 @@ class SubSubCategoryController extends Controller
         return view('backend.category.subsubcategory.edit',compact('categories','subcategories','subsubcategory'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $subsubcategory =Subsubcategory::find($id);
@@ -127,12 +99,7 @@ class SubSubCategoryController extends Controller
         return redirect()->route('subsubcategory.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         $Subsubcategory = Subsubcategory::find($id);

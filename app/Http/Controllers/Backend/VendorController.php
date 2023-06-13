@@ -12,39 +12,26 @@ use Auth;
 
 class VendorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $vendor = Vendor::latest()->get();
         return view('backend.vendor.index', compact('vendor'));
 
-        
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('backend.vendor.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         // dd($request);
-        // slug insert   
+        // slug insert
         $slug_en  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->shop_name)));
 
         // slug image shop_profile
@@ -72,7 +59,7 @@ class VendorController extends Controller
         $trade_license = 'upload/vendor/'.$name_gen;
 
         $uset_id = Auth::guard('admin')->user()->id;
-        
+
         // Date insert
         Vendor::insert([
            'shop_name' => $request->shop_name,
@@ -103,30 +90,19 @@ class VendorController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $vendor = Vendor::find($id);
         return view('backend.vendor.edit', compact('vendor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        
+
         $vendor = Vendor::find($id);
-        // slug insert   
+        // slug insert
         $slug_en  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->shop_name)));
         $uset_id = Auth::guard('admin')->user()->id;
 
@@ -139,7 +115,7 @@ class VendorController extends Controller
             } catch (Exception $e) {
 
             }
-            
+
             // slug image shop_profile
             $image = $request->file('shop_profile');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -158,7 +134,7 @@ class VendorController extends Controller
             } catch (Exception $e) {
 
             }
-            
+
             // slug image shop_cover
             $image = $request->file('shop_cover');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -177,7 +153,7 @@ class VendorController extends Controller
             } catch (Exception $e) {
 
             }
-            
+
             // slug image nid
             $image = $request->file('nid');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -196,7 +172,7 @@ class VendorController extends Controller
             } catch (Exception $e) {
 
             }
-            
+
             // slug image trade_license
             $image = $request->file('trade_license');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -239,12 +215,7 @@ class VendorController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $vendor = Vendor::find($id);

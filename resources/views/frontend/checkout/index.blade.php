@@ -458,7 +458,7 @@
                 $('#ship_charge').text(number_format(shipping_charge, 2, '.', ','));
                 $('#total').text(number_format(total, 2, '.', ','));
                 $('#gtotal').val(total);
-                console.log(gtotal);
+                // console.log(gtotal);
             });
 
             function number_format(number, decimals, dec_point, thousands_sep) {

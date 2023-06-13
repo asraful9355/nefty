@@ -12,33 +12,20 @@ use Auth;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $suppliers = Supplier::latest()->get();
         return view('backend.supplier.index', compact('suppliers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('backend.supplier.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $uset_id = Auth::guard('admin')->user()->id;
@@ -50,30 +37,14 @@ class SupplierController extends Controller
             'address' => $request->address,
             'status' => $request->status,
             'created_by' => $uset_id,
- 
+
             'created_at' => Carbon::now(),
         ]);
         Session::flash('success', 'Supplier Inserted Successfully');
         return redirect()->route('supplier.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $supplier = Supplier::find($id);
@@ -97,19 +68,14 @@ class SupplierController extends Controller
             'address' => $request->address,
             'status' => $request->status,
             'created_by' => $uset_id,
- 
+
             'updated_at' => Carbon::now(),
         ]);
         Session::flash('success', 'Supplier Update Successfully');
         return redirect()->route('supplier.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         $supplier = Supplier::find($id);

@@ -13,15 +13,7 @@ use Illuminate\Support\Facades\Session;
 
 class ShippingAreaController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('role');
-    // }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     // ==============================================
     // =======>>> Start Division Controller <<<======
     // ==============================================
@@ -33,12 +25,7 @@ class ShippingAreaController extends Controller
 		return view('backend.shipping_area.ship_division.index',compact('divisions'));
     } // End Method
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function divisionStore(Request $request)
     {
         $this->validate($request, [
@@ -55,25 +42,13 @@ class ShippingAreaController extends Controller
     } // End Method
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function divisionEdit($id)
     {
         $division = ShipDivision::findOrFail($id);
 		return view('backend.shipping_area.ship_division.edit',compact('division'));
     } // End Method
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function divisionUpdate(Request $request, $id)
     {
         $this->validate($request, [
@@ -89,12 +64,7 @@ class ShippingAreaController extends Controller
         return redirect()->route('viewDivision');
     } // End Method
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function divisionDelete($id)
     {
         ShipDivision::findOrFail($id)->delete();
@@ -118,12 +88,7 @@ class ShippingAreaController extends Controller
 		return view('backend.shipping_area.ship_district.index',compact('districts', 'divisions'));
     } // End Method
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function storeDistrict(Request $request)
     {
         $this->validate($request, [
@@ -141,12 +106,7 @@ class ShippingAreaController extends Controller
         return redirect()->back();
     } // End Method
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function districtEdit($id)
     {
         $divisions = ShipDivision::orderBy('division_name','ASC')->get();
@@ -154,13 +114,7 @@ class ShippingAreaController extends Controller
 		return view('backend.shipping_area.ship_district.edit',compact('divisions','district'));
     } // End Method
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function districtUpdate(Request $request, $id)
     {
         $this->validate($request, [
@@ -178,12 +132,7 @@ class ShippingAreaController extends Controller
         return redirect()->route('viewDistricts');
     } // End Method
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function districtDelete($id)
     {
         ShipDistricts::findOrFail($id)->delete();
@@ -206,12 +155,7 @@ class ShippingAreaController extends Controller
 		return view('backend.shipping_area.ship_states.index',compact('divisions','districts','states'));
     } // End Method
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function storeState(Request $request)
     {
         $this->validate($request, [
@@ -231,12 +175,7 @@ class ShippingAreaController extends Controller
         return redirect()->back();
     } // End Method
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function editState($id)
     {
         $divisions = Shipdivision::orderBy('division_name','ASC')->get();
@@ -245,13 +184,7 @@ class ShippingAreaController extends Controller
 		return view('backend.shipping_area.ship_states.edit',compact('divisions','districts','state'));
     } // End Method
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function updateState(Request $request, $id)
     {
         $this->validate($request, [
@@ -277,12 +210,7 @@ class ShippingAreaController extends Controller
         $districts = ShipDistricts::where('shipdivision_id',$shipdivision_id)->orderBy('district_name','ASC')->get();
         return json_encode($districts);
     } // End Method
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function destroyState($id)
     {
         ShipStates::findOrFail($id)->delete();

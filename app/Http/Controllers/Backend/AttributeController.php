@@ -15,11 +15,7 @@ use Auth;
 
 class AttributeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $attributes = Attribute::latest()->get();
@@ -45,23 +41,14 @@ class AttributeController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $attributes = Attribute::all();
         return view('backend.attribute.create',compact('attributes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -78,12 +65,7 @@ class AttributeController extends Controller
         return redirect()->route('attribute.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $attribute = Attribute::findOrFail($id);
@@ -91,25 +73,14 @@ class AttributeController extends Controller
         return view('backend.attribute.show',compact('attribute', 'values'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $attribute = Attribute::findOrFail($id);
         return view('backend.attribute.edit',compact('attribute'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $attribute = Attribute::find($id);
@@ -126,12 +97,7 @@ class AttributeController extends Controller
         return redirect()->route('attribute.index')->with($notification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         $attribute = Attribute::findOrFail($id);
