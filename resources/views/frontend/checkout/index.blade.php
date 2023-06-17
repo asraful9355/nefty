@@ -437,6 +437,31 @@
 
         <!--===============  Start  Shipping Charge  ===============-->
         <script type="text/javascript">
+            // $(document).on('change', '#distr', function(e) {
+            //     let shipping_charge = 0;
+
+            //     if ($("select[name='district_id']").val() == '18') {
+            //         let charge = "80";
+            //         shipping_charge += parseInt(charge);
+            //     } else {
+            //         let charge = "110";
+            //         shipping_charge += parseInt(charge);
+            //     }
+
+            //     let subtotal = $('#subtotal').text();
+            //     // let coupon   = $('span#coupon').text();
+
+            //     let rep_subtotal = subtotal.replace(',', '');
+            //     // let rep_coupon   = coupon.replace(',', '');
+
+            //     let total = (parseInt(rep_subtotal) + shipping_charge);
+            //     $('#ship_charge').text(number_format(shipping_charge, 2, '.', ','));
+            //     $('#total').text(number_format(total, 2, '.', ','));
+            //     $('#gtotal').val(total);
+            //     // console.log(gtotal);
+            // });
+
+
             $(document).on('change', '#distr', function(e) {
                 let shipping_charge = 0;
 
