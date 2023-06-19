@@ -23,7 +23,7 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label for="title_en">Category Name (English): <span class="text-danger">*</span></label>
-                                <input type="text" name="category_name_en" value="" id="category_name_bn" class="form-control" placeholder="Write category name english">
+                                <input type="text" name="category_name_en" value="{{ old('category_name_en') }}" id="category_name_bn" class="form-control" placeholder="Write category name english">
                                 @error('category_name_en')
                                   <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -31,8 +31,8 @@
                            </div>
                            <div class="col-md-12">
                               <div class="form-group">
-                                <label for="title_bn">Category Name (Bangla) <span class="text-danger">*</span></label>
-                                <input type="text" name="category_name_bn" value="" id="category_name_bn" class="form-control" placeholder="Write category name bangla">
+                                <label for="title_bn">Category Name (Bangla) </label>
+                                <input type="text" name="category_name_bn" value="{{ old('category_name_bn') }}" id="category_name_bn" class="form-control" placeholder="Write category name bangla">
                                 @error('category_name_bn')
                                   <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -42,7 +42,7 @@
                             <div class="form-group">
                               <label for="category_image">Category Image</label>
                               <span class="text-danger">*</span>
-                              <span class="text-danger">Image Size 180x180</span>
+                              <span class="">Image Size 180x180</span>
 
                               <div class="input-group">
                                 <div class="custom-file">

@@ -60,7 +60,6 @@ class CheckoutController extends Controller
 
     /* ============= Start Payment Method ============== */
     public function payment(Request $request){
-        // dd($request->payment_option);
         if($request->payment_option == 'cash_on_delivery'){
             $checkout = new CheckoutController;
             return $checkout->store($request);
@@ -103,7 +102,7 @@ class CheckoutController extends Controller
     {
         $carts = Cart::content();
         // dd($carts);
-        dd($request->all(), $carts);
+        // dd($request->all(), $carts);
 
         if($carts->isEmpty()){
             $notification = array(

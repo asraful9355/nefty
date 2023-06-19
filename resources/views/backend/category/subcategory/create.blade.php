@@ -26,9 +26,8 @@
                                 <select name="category_id" id="category_id" required="" class="form-control select2" aria-invalid="false">
                                     <option value="" selected disabled>Select Category</option>
                                     @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category_name_en }}</option>
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->category_name_en }}</option>
                                     @endforeach
-
                                 </select>
                                 @error('category_id')
                                   <span class="text-danger">{{ $message }}</span>
@@ -37,8 +36,8 @@
                            </div>
                            <div class="col-md-12">
                             <div class="form-group">
-                              <label for="title_en">SubCategory Name (English): <span class="text-danger">*</span></label>
-                              <input type="text" name="subcategory_name_en" value="" id="subcategory_name_bn" class="form-control" placeholder="Write subcategory name english">
+                              <label for="title_en">SubCategory Name (English): </label>
+                              <input type="text" name="subcategory_name_en" value="{{ old('subcategory_name_en') }}" id="subcategory_name_bn" class="form-control" placeholder="Write subcategory name english">
                               @error('subcategory_name_en')
                                 <span class="text-danger">{{ $message }}</span>
                               @enderror
@@ -47,7 +46,7 @@
                          <div class="col-md-12">
                             <div class="form-group">
                               <label for="title_bn">SubCategory Name (Bangla) <span class="text-danger">*</span></label>
-                              <input type="text" name="subcategory_name_bn" value="" id="subcategory_name_bn" class="form-control" placeholder="Write subcategory name bangla">
+                              <input type="text" name="subcategory_name_bn" value="{{ old('subcategory_name_bn') }}" id="subcategory_name_bn" class="form-control" placeholder="Write subcategory name bangla">
                               @error('subcategory_name_bn')
                                 <span class="text-danger">{{ $message }}</span>
                               @enderror

@@ -61,9 +61,9 @@
                                                 class="text-danger">*</span></label>
                                         <select name="shipdivision_id" required="" class="form-control"
                                             aria-invalid="false">
-                                            @foreach ($divisions as $division)
                                             <option disabled selected > select division</option>
-                                                <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                            @foreach ($divisions as $division)
+                                                <option value="{{ $division->id }}" {{ old('shipdivision_id') == $division->id ? 'selected' : '' }}>{{ $division->division_name }}</option>
                                             @endforeach
                                         </select>
                                         @error('shipdivision_id')
