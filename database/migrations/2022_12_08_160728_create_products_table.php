@@ -37,6 +37,8 @@ class CreateProductsTable extends Migration
             $table->integer('minimum_buy_qty')->default(1);
             $table->integer('stock_qty')->default(0);
             $table->string('product_thumbnail')->nullable();
+            $table->text('short_description_en')->nullable();
+            $table->text('short_description_bn')->nullable();
             $table->text('description_en')->nullable();
             $table->text('description_bn')->nullable();
             $table->string('attributes')->nullable();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use Auth;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
@@ -32,11 +33,14 @@ class CheckoutController extends Controller
         $carts = Cart::content();
         // dd($carts);
 
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+
         $cartQty = Cart::count();
         $cartTotal = Cart::total();
         $divisions = ShipDivision::all();
 
-        return view('frontend.checkout.index',compact('carts','cartQty','cartTotal', 'divisions'));
+        return view('frontend.checkout.index',compact('carts','cartQty','cartTotal', 'divisions', 'userData'));
     } // end method
     /* ========= End Checkout Index Method ============ */
 

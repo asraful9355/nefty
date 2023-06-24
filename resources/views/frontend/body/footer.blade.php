@@ -3,9 +3,14 @@
     <section class="py-4 bg-dark-1">
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+
                 <div class="col">
                     <div class="footer-section1 mb-3">
+                        @if (session()->get('language') == 'bangla')
+                        <h6 class="mb-3 text-uppercase">কন্টাক্ট ইনফো</h6>
+                        @else
                         <h6 class="mb-3 text-uppercase">Contact Info</h6>
+                        @endif
                         <div class="address mb-3">
                             <p class="mb-0 text-uppercase text-white">Address :</p>
                             <p class="mb-0 font-12">{{ get_setting('business_address')->value ?? 'null' }}</p>
@@ -24,17 +29,23 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="footer-section2 mb-3">
                         @php
                             $categories = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
                         @endphp
+
+                        @if (session()->get('language') == 'bangla')
+                        <h6 class="mb-3 text-uppercase">পপুলার ক্যাটাগরি</h6>
+                        @else
                         <h6 class="mb-3 text-uppercase">Popular Categories</h6>
+                        @endif
                         <ul class="list-unstyled">
                             @foreach ($categories->take(10) as $category)
                                 <li class="mb-1">
                                     <a href="#">
-                                        <i class='bx bx-chevron-right'></i> 
+                                        <i class='bx bx-chevron-right'></i>
                                         @if(session()->get('language') == 'bangla')
                                             {{ $category->category_name_bn }}
                                         @else
@@ -46,13 +57,18 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="footer-section2 mb-3">
+                        @if (session()->get('language') == 'bangla')
+                        <h6 class="mb-3 text-uppercase">পপুলার পেজ</h6>
+                        @else
                         <h6 class="mb-3 text-uppercase">Popular Pages</h6>
+                        @endif
                         <ul class="list-unstyled">
                            @foreach(get_pages_both_footer() as $page)
                                 <li class="mb-1">
-                                    <i class='bx bx-chevron-right'></i> 
+                                    <i class='bx bx-chevron-right'></i>
                                     <a href="{{ route('page.about', $page->slug) }}">
                                         {{ $page->name_en }}
                                     </a>
@@ -61,9 +77,15 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="footer-section4 mb-3">
+                        <h6 class="mb-3 text-uppercase"></h6>
+                        @if (session()->get('language') == 'bangla')
+                        <h6 class="mb-3 text-uppercase">অবগত থাকুন</h6>
+                        @else
                         <h6 class="mb-3 text-uppercase">Stay informed</h6>
+                        @endif
                         <div class="subscribe">
                             <form  action="{{ route('subs.store') }}" method="post">
                                 @csrf

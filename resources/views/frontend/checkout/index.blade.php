@@ -1,5 +1,9 @@
 @extends('layouts.frontend')
 @section('content-frontend')
+
+@php
+
+@endphp
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
@@ -7,17 +11,35 @@
             <section class="py-3 border-bottom d-none d-md-flex">
                 <div class="container">
                     <div class="page-breadcrumb d-flex align-items-center">
-                        <h3 class="breadcrumb-title pe-3">Checkout</h3>
+                        @if (session()->get('language') == 'bangla')
+                            <h3 class="breadcrumb-title pe-3">চেক আউট</h3>
+                        @else
+                            <h3 class="breadcrumb-title pe-3">Checkout</h3>
+                        @endif
                         <div class="ms-auto">
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="bx bx-home-alt"></i>
-                                            Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-                                </ol>
+                                @if (session()->get('language') == 'bangla')
+                                    <ol class="breadcrumb mb-0 p-0">
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                    class="bx bx-home-alt"></i>হোম</a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="/product/shop">দোকান</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">চেক আউট
+                                            </li>
+                                    </ol>
+                                @else
+                                    <ol class="breadcrumb mb-0 p-0">
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                    class="bx bx-home-alt"></i>
+                                                Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="/product/shop">Shop</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Checkout
+                                        </li>
+                                    </ol>
+                                @endif
                             </nav>
                         </div>
                     </div>
@@ -40,16 +62,17 @@
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="">
-                                                        <img src="{{ asset('frontend/assets/images/avatars/avatar-1.png ') }}"
+                                                        <img src="{{ !empty($userData->photo) ? url('upload/user_images/' . $userData->photo) : url('upload/no_image.jpg') }}"
                                                             width="90" alt="" class="rounded-circle p-1 border">
                                                     </div>
                                                     <div class="ms-2">
-                                                        <h6 class="mb-0">Shamim</h6>
-                                                        <p class="mb-0">shamim@gmail.com</p>
+                                                        <h6 class="mb-0">{{ $userData->name }}</h6>
+                                                        <p class="mb-0">{{ $userData->name }}</p>
                                                     </div>
-                                                    <div class="ms-auto"> <a href="javascript:;"
+                                                    <div class="ms-auto">
+                                                        {{-- <a href="javascript:;"
                                                             class="btn btn-light btn-ecomm"><i class='bx bx-edit'></i> Edit
-                                                            Profile</a>
+                                                            Profile</a> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -286,7 +309,7 @@
                                                                         <label class="aiz-megabox d-block mb-3">
                                                                             <input value="bkash" class="online_payment"
                                                                                 type="radio" name="payment_option"
-                                                                                checked>
+                                                                                checked disabled>
                                                                             <span class="d-block aiz-megabox-elem p-3">
                                                                                 <img src="{{ asset('frontend/payment/bkash.png') }}"
                                                                                     class="img-fluid mb-2">
@@ -302,7 +325,7 @@
                                                                         <label class="aiz-megabox d-block mb-3">
                                                                             <input value="nagad" class="online_payment"
                                                                                 type="radio" name="payment_option"
-                                                                                checked>
+                                                                                checked disabled>
                                                                             <span class="d-block aiz-megabox-elem p-3">
                                                                                 <img src="{{ asset('frontend/payment/nagad.png') }}"
                                                                                     class="img-fluid mb-2">
@@ -318,7 +341,7 @@
                                                                         <label class="aiz-megabox d-block mb-3">
                                                                             <input value="sslcommerz"
                                                                                 class="online_payment" type="radio"
-                                                                                name="payment_option" checked>
+                                                                                name="payment_option" checked disabled>
                                                                             <span class="d-block aiz-megabox-elem p-3">
                                                                                 <img src="{{ asset('frontend/payment/sslcommerz.png') }}"
                                                                                     class="img-fluid mb-2">

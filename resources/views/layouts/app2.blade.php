@@ -91,6 +91,7 @@
       <script src="{{ asset('backend/asset/js/demo/datatables-demo.js ') }}"></script>
       <script src="{{ asset('backend/asset/js/jquery.PrintArea.js ') }}"></script>
       <script src="{{ asset('backend/asset/js/select2.min.js ') }}"></script>
+      <script src="{{ asset('backend/asset/js/validate.min.js ') }}"></script>
       <script src="{{ asset('backend/asset/toastr/toastr.min.js ') }}"></script>
       <script src="{{ asset('backend/asset/summernote/summernote-bs4.js ') }}"></script>
       <!-- Sweetalert js -->

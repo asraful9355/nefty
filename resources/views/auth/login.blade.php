@@ -6,16 +6,31 @@
         <section class="py-3 border-bottom d-none d-md-flex">
             <div class="container">
                 <div class="page-breadcrumb d-flex align-items-center">
-                    <h3 class="breadcrumb-title pe-3">Sign in</h3>
+                    @if (session()->get('language') == 'bangla')
+                        <h3 class="breadcrumb-title pe-3">সাইন ইন করুন</h3>
+                    @else
+                        <h3 class="breadcrumb-title pe-3">Sign in</h3>
+                    @endif
                     <div class="ms-auto">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="javascript:;">Authentication</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">Sign In</li>
-                            </ol>
+                            @if (session()->get('language') == 'bangla')
+                                <ol class="breadcrumb mb-0 p-0">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                class="bx bx-home-alt"></i>হোম</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="/product/shop">দোকান</a>
+                                    </li>
+                                </ol>
+                            @else
+                                <ol class="breadcrumb mb-0 p-0">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                class="bx bx-home-alt"></i>
+                                            Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="/product/shop">Shop</a>
+                                    </li>
+                                </ol>
+                            @endif
                         </nav>
                     </div>
                 </div>

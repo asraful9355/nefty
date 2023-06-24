@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
 
         // Start Shop Product //
-        $products = Product::orderBy('name_en', 'ASC')->where('status', 1)->latest()->paginate(6);
+        $products = Product::orderBy('id', 'ASC')->where('status', 1)->latest()->paginate(6);
         // Start Attribute Product //
         $products_attr = Product::orderBy('name_en', 'ASC')->where('status', 1)->latest()->get();
         $featured_category =  Category::orderBy('category_name_en','ASC')->where('featured_category',1)->where('status', 1)->latest()->get();

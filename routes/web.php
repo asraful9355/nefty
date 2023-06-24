@@ -132,12 +132,13 @@ Route::get('/user/orders/{invoice_no}',[UserController::class, 'orderView'])->na
 
 /* =============== Hot Deals  ============= */
 Route::get('/hot-deals', [FrontendController::class, 'hotDeals'])->name('hot_deals.all');
+Route::get('/featured', [FrontendController::class, 'featured'])->name('featured.all');
 
 
 /// Product Quick View Modal with Ajax ////
 Route::get('/product/quick/view/modal/{id}', [FrontendController::class, 'ProductQuickViewAjax']);
 
-// ajax er jonne controller akhan theke start 
+// ajax er jonne controller akhan theke start
 Route::get('/banner/all', [AjaxController::class, 'bannerAll']);
 
 

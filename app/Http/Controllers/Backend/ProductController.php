@@ -51,16 +51,21 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name_en'           => 'required|max:150',
-            'purchase_price'    => 'required|nullable',
-            'wholesell_price'   => 'nullable|numeric',
-            'discount_price'    => 'nullable|numeric',
-            'regular_price'     => 'required|numeric',
-            'stock_qty'         => 'required|integer',
-            'description_en'    => 'nullable|string',
-            'category_id'       => 'required|integer',
-            'brand_id'          => 'required|integer',
-            'product_thumbnail' => 'required|file',
+            'name_en'                   => 'required|max:150',
+            'category_id'               => 'required|integer',
+            'subcategory_id'            => 'required|integer',
+            'subsubcategory_id'         => 'required|integer',
+            'brand_id'                  => 'required|integer',
+            'purchase_price'            => 'required|nullable',
+            'wholesell_price'           => 'nullable|numeric',
+            'discount_price'            => 'nullable|numeric',
+            'regular_price'             => 'required|numeric',
+            'stock_qty'                 => 'required|numeric',
+            'description_en'            => 'nullable|string',
+            'short_description_en'      => 'nullable|string',
+            'product_thumbnail'         => 'required|file',
+            'multi_img'                 => 'required|',
+            'stock_qty'                 => 'required',
         ]);
 
         // dd($request->all());
@@ -71,6 +76,9 @@ class ProductController extends Controller
 
         if(!$request->description_bn){
             $request->description_bn = $request->description_en;
+        }
+        if(!$request->short_description_bn){
+            $request->short_description_bn = $request->short_description_en;
         }
 
         $slug = strtolower(str_replace(' ', '-', $request->name_en));
@@ -101,33 +109,35 @@ class ProductController extends Controller
         }
 
         $product = Product::create([
-            'brand_id'              => $request->brand_id,
-            'category_id'           => $request->category_id,
-            'subcategory_id'        => $request->subcategory_id,
-            'subsubcategory_id'     => $request->subsubcategory_id,
-            'vendor_id'             => $request->vendor_id,
-            'supplier_id'           => $request->supplier_id,
-            'campaing_id'           => $request->campaing_id,
-            'name_en'               => $request->name_en,
-            'name_bn'               => $request->name_bn,
-            'slug'                  => $slug,
-            'purchase_price'        => $request->purchase_price,
-            'wholesell_price'       => $request->wholesell_price,
-            'wholesell_minimum_qty' => $request->wholesell_minimum_qty,
-            'regular_price'         => $request->regular_price,
-            'discount_price'        => $request->discount_price,
-            'discount_type'         => $request->discount_type,
-            'product_code'          => rand(10000,99999),
-            'minimum_buy_qty'       => $request->minimum_buy_qty,
-            'stock_qty'             => $request->stock_qty,
-            'description_en'        => $request->description_en,
-            'description_bn'        => $request->description_bn,
-            'is_featured'           => $request->is_featured,
-            'is_deals'              => $request->is_deals,
-            'is_digital'            => $request->is_digital,
-            'status'                => $request->status,
-            'product_thumbnail'     => $save_url,
-            'created_by'            => Auth::guard('admin')->user()->id,
+            'brand_id'                  => $request->brand_id,
+            'category_id'               => $request->category_id,
+            'subcategory_id'            => $request->subcategory_id,
+            'subsubcategory_id'         => $request->subsubcategory_id,
+            'vendor_id'                 => $request->vendor_id,
+            'supplier_id'               => $request->supplier_id,
+            'campaing_id'               => $request->campaing_id,
+            'name_en'                   => $request->name_en,
+            'name_bn'                   => $request->name_bn,
+            'slug'                      => $slug,
+            'purchase_price'            => $request->purchase_price,
+            'wholesell_price'           => $request->wholesell_price,
+            'wholesell_minimum_qty'     => $request->wholesell_minimum_qty,
+            'regular_price'             => $request->regular_price,
+            'discount_price'            => $request->discount_price,
+            'discount_type'             => $request->discount_type,
+            'product_code'              => rand(10000,99999),
+            'minimum_buy_qty'           => $request->minimum_buy_qty,
+            'stock_qty'                 => $request->stock_qty,
+            'short_description_en'      => $request->short_description_en,
+            'short_description_en'      => $request->short_description_en,
+            'description_en'            => $request->description_en,
+            'description_bn'            => $request->description_bn,
+            'is_featured'               => $request->is_featured,
+            'is_deals'                  => $request->is_deals,
+            'is_digital'                => $request->is_digital,
+            'status'                    => $request->status,
+            'product_thumbnail'         => $save_url,
+            'created_by'                => Auth::guard('admin')->user()->id,
         ]);
 
         // dd($product);
@@ -494,7 +504,7 @@ class ProductController extends Controller
     } // end method
     /*=================== End Multi Image Delete =================*/
 
-    
+
     public function destroy($id)
     {
         $product = Product::findOrFail($id);

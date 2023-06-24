@@ -11,11 +11,11 @@
           <div class="ms-auto">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb mb-0 p-0">
-                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="bx bx-home-alt"></i> Home</a>
                 </li>
                 <li class="breadcrumb-item"><a href="javascript:;">Authentication</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('login') }}"> Sign Up</a></li>
               </ol>
             </nav>
           </div>

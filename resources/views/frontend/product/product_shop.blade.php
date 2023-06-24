@@ -5,22 +5,38 @@
 	<div class="page-content">
 		<!--start breadcrumb-->
 		<section class="py-3 border-bottom d-none d-md-flex">
-			<div class="container">
-				<div class="page-breadcrumb d-flex align-items-center">
-					<h3 class="breadcrumb-title pe-3">Prodduct Shop</h3>
-					<div class="ms-auto">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
-								</li>
-								<li class="breadcrumb-item"><a href="javascript:;">Shop</a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Prodduct Shop</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-			</div>
+
+            <div class="container">
+                <div class="page-breadcrumb d-flex align-items-center">
+                    @if (session()->get('language') == 'bangla')
+                        <h3 class="breadcrumb-title pe-3">প্রোডাক্ট শপ</h3>
+                    @else
+                        <h3 class="breadcrumb-title pe-3">Prodduct Shop</h3>
+                    @endif
+                    <div class="ms-auto">
+                        <nav aria-label="breadcrumb">
+                            @if (session()->get('language') == 'bangla')
+                                <ol class="breadcrumb mb-0 p-0">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                class="bx bx-home-alt"></i>হোম</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="/product/shop">দোকান</a>
+                                    </li>
+                                </ol>
+                            @else
+                                <ol class="breadcrumb mb-0 p-0">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                class="bx bx-home-alt"></i>
+                                            Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="/product/shop">Shop</a>
+                                    </li>
+                                </ol>
+                            @endif
+                        </nav>
+                    </div>
+                </div>
+            </div>
 		</section>
 		<!--end breadcrumb-->
 		<!--start shop area-->
@@ -161,7 +177,7 @@
 													</a>
 												</div>
 											</div>
-											<img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="...">
+											<img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="..." style="object-fit: cover;">
 											<div class="card-body">
 												<div class="product-info">
 													<a href="javascript:;">
@@ -223,10 +239,10 @@
 										</div>
 									</div>
 									@empty
-			                            @if(session()->get('language') == 'bangla') 
-			    	                        <h5 class="text-danger">এখানে কোন পণ্য খুঁজে পাওয়া যায়নি!</h5> 
-			    	                    @else 
-			    	                       	<h5 class="text-danger">No products were found here!</h5> 
+			                            @if(session()->get('language') == 'bangla')
+			    	                        <h5 class="text-danger">এখানে কোন পণ্য খুঁজে পাওয়া যায়নি!</h5>
+			    	                    @else
+			    	                       	<h5 class="text-danger">No products were found here!</h5>
 			    	                    @endif
 			    	                @endforelse
 								</div>

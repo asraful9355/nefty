@@ -75,6 +75,7 @@
     <!--app JS-->
     <script src="{{asset('frontend/assets/js/app.js ')}}"></script>
     <script src="{{asset('frontend/assets/js/index.js ')}}"></script>
+    <script src="{{asset('frontend/assets/js/product-details.js ')}}"></script>
 
     <!-- Toastr js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -572,7 +573,7 @@
       });
     }
 
-    
+
     /* ==================== End  cartIncrement ================== */
 
     /* ==================== Start  Cart Decrement ================== */

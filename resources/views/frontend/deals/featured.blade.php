@@ -8,10 +8,11 @@
                 <div class="container">
                     <div class="page-breadcrumb d-flex align-items-center">
                         @if (session()->get('language') == 'bangla')
-                            <h3 class="breadcrumb-title pe-3">ক্যাটাগরি প্রোডাক্ট</h3>
+                            <h3 class="breadcrumb-title pe-3">ফিচার্ড প্রোডাক্ট</h3>
                         @else
-                            <h3 class="breadcrumb-title pe-3">Categories Product</h3>
+                            <h3 class="breadcrumb-title pe-3">Featured</h3>
                         @endif
+
                         <div class="ms-auto">
                             <nav aria-label="breadcrumb">
                                 @if (session()->get('language') == 'bangla')
@@ -21,8 +22,7 @@
                                         </li>
                                         <li class="breadcrumb-item"><a href="/product/shop">দোকান</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('product.category', $category->slug) }}">{{ $category->category_name_bn }}</a>
-                                            </li>
+                                        <li class="breadcrumb-item active" aria-current="page">ফিচার্ড প্রোডাক্ট</li>
                                     </ol>
                                 @else
                                     <ol class="breadcrumb mb-0 p-0">
@@ -32,8 +32,7 @@
                                         </li>
                                         <li class="breadcrumb-item"><a href="/product/shop">Shop</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('product.category', $category->slug) }}">{{ $category->category_name_en }}</a>
-                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Featured Product</li>
                                     </ol>
                                 @endif
                             </nav>
@@ -69,19 +68,13 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <a href="{{ route('product.details', $product->slug) }}">
                                                     <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top"
-                                                        alt="..." style="object-fit: cover;">
-                                                    </a>
+                                                        alt="...">
                                                     <div class="card-body">
                                                         <div class="product-info">
-                                                            <a href="{{ route('product.category', $category->slug) }}">
+                                                            <a href="#">
                                                                 <p class="product-catergory font-13 mb-1">
-                                                                    @if (session()->get('language') == 'bangla')
-                                                                        {{ $category->category_name_bn }}
-                                                                    @else
-                                                                        {{ $category->category_name_en }}
-                                                                    @endif
+
                                                                 </p>
                                                             </a>
                                                             <a href="{{ route('product.details', $product->slug) }}">

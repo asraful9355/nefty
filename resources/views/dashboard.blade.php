@@ -10,11 +10,11 @@
                <div class="ms-auto">
                   <nav aria-label="breadcrumb">
                      <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="bx bx-home-alt"></i> Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="javascript:;">Account</a>
+                        <li class="breadcrumb-item"><a href="{{ route('user.profile.index') }}">Account</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">My Dashboard</li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('dashboard') }}">My Dashboard</a> </li>
                      </ol>
                   </nav>
                </div>
@@ -47,14 +47,14 @@
                                              @php
                                                 $orders = App\Models\Order::where('user_id',Auth::id())->orderBy('id','DESC')->get();
                                              @endphp
-                                             <p>{{ count($orders) }}</p> 
+                                             <p>{{ count($orders) }}</p>
                                          </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-6 item text-center">
                                          <div class="card">
                                              <p class="pt-3">
                                                 <i class="fas fa-balance-scale"></i>
-                                             </p>       
+                                             </p>
                                              <span>PENDING ORDER</span>
                                              <p>{{ count($orders) }}</p>
                                          </div>
