@@ -58,7 +58,7 @@ class CartController extends Controller
         }else{
             if($product->discount_price > 0){
                 if($product->discount_type == 1){
-                    $price = $product->regular_price - $product->discount_price;
+                    $price = $product->discount_price;
                 }else{
                     $price = $product->regular_price - ($product->discount_price * $product->regular_price / 100);
                 }
@@ -66,6 +66,13 @@ class CartController extends Controller
                 $price = $product->regular_price;
             }
         }
+
+        // if ($product->discount_type == 1) {
+        //     $price_after_discount = $product->discount_price;
+        // } elseif ($product->discount_type == 2) {
+        //     $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+        //     $price_after_discount = $product->regular_price - $discount_amount;
+        // }
 
 
 
@@ -220,7 +227,7 @@ class CartController extends Controller
     public function removeCartProduct($rowId){
 
         Cart::remove($rowId);
-        
+
         if (Session::has('coupon')) {
 
             $coupon_name = Session::get('coupon')['coupon_name'];
