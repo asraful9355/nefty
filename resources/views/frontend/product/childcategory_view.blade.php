@@ -103,10 +103,11 @@
                                                             </a>
                                                             @php
                                                                 if ($product->discount_type == 1) {
-                                                                    $price_after_discount = $product->regular_price - $product->discount_price;
-                                                                } elseif ($product->discount_type == 2) {
-                                                                    $price_after_discount = $product->regular_price - ($product->regular_price * $product->discount_price) / 100;
-                                                                }
+                                                $price_after_discount = $product->discount_price;
+                                            } elseif ($product->discount_type == 2) {
+                                                $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                $price_after_discount = $product->regular_price - $discount_amount;
+                                            }
                                                             @endphp
                                                             <div class="d-flex align-items-center">
                                                                 @if ($product->discount_price > 0)

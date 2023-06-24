@@ -26,7 +26,8 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <img style="object-fit: cover;" src="{{ asset($slider->slider_img) }}" class="img-fluid" alt="...">
+                                    <img style="object-fit: cover;" src="{{ asset($slider->slider_img) }}" class="img-fluid"
+                                        alt="...">
                                 </div>
                             </div>
                         </div>
@@ -97,8 +98,8 @@
                                 <div class="card rounded-0">
                                     <div class="row g-0 align-items-center">
                                         <div class="col">
-                                            <img style="object-fit: cover;" src="{{ asset($banner->banner_image) }}" class="img-fluid"
-                                                alt="" />
+                                            <img style="object-fit: cover;" src="{{ asset($banner->banner_image) }}"
+                                                class="img-fluid" alt="" />
                                         </div>
                                         <div class="col">
                                             <div class="card-body">
@@ -284,12 +285,13 @@
                                     </div>
                                     @if ($product->product_thumbnail && $product->product_thumbnail != '' && $product->product_thumbnail != 'Null')
                                         <a href="{{ route('product.details', $product->slug) }}">
-                                            <img style="object-fit: cover;" src="{{ asset($product->product_thumbnail) }}" width="261"
+                                            <img style="object-fit: cover;"
+                                                src="{{ asset($product->product_thumbnail) }}" width="261"
                                                 height="196" class="card-img-top" alt="...">
                                         </a>
                                     @else
-                                        <img style="object-fit: cover;" class="img-lg mb-3" src="{{ asset('upload/no_image.jpg') }}"
-                                            alt="" />
+                                        <img style="object-fit: cover;" class="img-lg mb-3"
+                                            src="{{ asset('upload/no_image.jpg') }}" alt="" />
                                     @endif
                                     <div class="card-body">
                                         <div class="product-info">
@@ -316,9 +318,10 @@
                                             </a>
                                             @php
                                                 if ($product->discount_type == 1) {
-                                                    $price_after_discount = $product->regular_price - $product->discount_price;
+                                                    $price_after_discount = $product->discount_price;
                                                 } elseif ($product->discount_type == 2) {
-                                                    $price_after_discount = $product->regular_price - ($product->regular_price * $product->discount_price) / 100;
+                                                    $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                    $price_after_discount = $product->regular_price - $discount_amount;
                                                 }
                                             @endphp
                                             <div class="d-flex align-items-center">
@@ -416,12 +419,13 @@
                                         </div>
                                         @if ($product->product_thumbnail && $product->product_thumbnail != '' && $product->product_thumbnail != 'Null')
                                             <a href="{{ route('product.details', $product->slug) }}">
-                                                <img style="object-fit: cover;" src="{{ asset($product->product_thumbnail) }}" width="261"
+                                                <img style="object-fit: cover;"
+                                                    src="{{ asset($product->product_thumbnail) }}" width="261"
                                                     height="196" class="card-img-top" alt="...">
                                             </a>
                                         @else
-                                            <img style="object-fit: cover;" class="img-lg mb-3" src="{{ asset('upload/no_image.jpg') }}"
-                                                alt="" />
+                                            <img style="object-fit: cover;" class="img-lg mb-3"
+                                                src="{{ asset('upload/no_image.jpg') }}" alt="" />
                                         @endif
                                         <div class="card-body">
                                             <div class="product-info">
@@ -448,9 +452,10 @@
                                                 </a>
                                                 @php
                                                     if ($product->discount_type == 1) {
-                                                        $price_after_discount = $product->regular_price - $product->discount_price;
+                                                        $price_after_discount = $product->discount_price;
                                                     } elseif ($product->discount_type == 2) {
-                                                        $price_after_discount = $product->regular_price - ($product->regular_price * $product->discount_price) / 100;
+                                                        $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                        $price_after_discount = $product->regular_price - $discount_amount;
                                                     }
                                                 @endphp
                                                 <div class="d-flex align-items-center">
@@ -521,8 +526,8 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
                         <div class="col d-flex">
                             <div class="card rounded-0 w-100">
-                                <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/04.png') }}" class="card-img-top"
-                                    alt="...">
+                                <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/04.png') }}"
+                                    class="card-img-top" alt="...">
                                 <div class="position-absolute top-0 end-0 m-3 product-discount"><span
                                         class="">-10%</span>
                                 </div>
@@ -543,14 +548,14 @@
                                     <p class="card-text">Buy Cosmetics products and get 30% off at all Cosmetics</p> <a
                                         href="javascript:;" class="btn btn-light btn-ecomm">SHOP BY COSMETICS</a>
                                 </div>
-                                <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/08.png') }}" class="card-img-top"
-                                    alt="...">
+                                <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/08.png') }}"
+                                    class="card-img-top" alt="...">
                             </div>
                         </div>
                         <div class="col d-flex">
                             <div class="card rounded-0 w-100">
-                                <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/06.png') }}" class="card-img h-100"
-                                    alt="...">
+                                <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/06.png') }}"
+                                    class="card-img h-100" alt="...">
                                 <div class="card-img-overlay text-center top-20">
                                     <div class="border border-white border-3 py-3 bg-dark-3">
                                         <h5 class="card-title">Fashion Summer Sale</h5>
@@ -568,7 +573,8 @@
                                         class="">-50%</span>
                                 </div>
                                 <div class="card-body text-center">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/promo/07.png') }}" class="card-img-top"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/promo/07.png') }}" class="card-img-top"
                                         alt="...">
                                     <h5 class="card-title fs-1 text-uppercase">Super Sale</h5>
                                     <p class="card-text text-uppercase fs-4 text-white lh-1 mb-2">Up to 50% off</p>
@@ -687,7 +693,8 @@
                                     <div class="date-month">FEB</div>
                                 </div>
                                 <a href="javascript:;">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/blogs/01.png') }}"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/blogs/01.png') }}"
                                         class="card-img-top border-bottom bg-dark-1" alt="...">
                                 </a>
                                 <div class="card-body">
@@ -715,7 +722,8 @@
                                     <div class="date-month">FEB</div>
                                 </div>
                                 <a href="javascript:;">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/blogs/02.png') }}"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/blogs/02.png') }}"
                                         class="card-img-top border-bottom bg-dark-1" alt="...">
                                 </a>
                                 <div class="card-body">
@@ -742,7 +750,8 @@
                                     <div class="date-month">FEB</div>
                                 </div>
                                 <a href="javascript:;">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/blogs/03.png') }}"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/blogs/03.png') }}"
                                         class="card-img-top border-bottom bg-dark-1" alt="...">
                                 </a>
                                 <div class="card-body">
@@ -769,7 +778,8 @@
                                     <div class="date-month">FEB</div>
                                 </div>
                                 <a href="javascript:;">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/blogs/04.png') }}"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/blogs/04.png') }}"
                                         class="card-img-top border-bottom bg-dark-1" alt="...">
                                 </a>
                                 <div class="card-body">
@@ -796,7 +806,8 @@
                                     <div class="date-month">FEB</div>
                                 </div>
                                 <a href="javascript:;">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/blogs/05.png') }}"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/blogs/05.png') }}"
                                         class="card-img-top border-bottom bg-dark-1" alt="...">
                                 </a>
                                 <div class="card-body">
@@ -823,7 +834,8 @@
                                     <div class="date-month">FEB</div>
                                 </div>
                                 <a href="javascript:;">
-                                    <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/blogs/06.png') }}"
+                                    <img style="object-fit: cover;"
+                                        src="{{ asset('frontend/assets/images/blogs/06.png') }}"
                                         class="card-img-top border-bottom bg-dark-1" alt="...">
                                 </a>
                                 <div class="card-body">
@@ -864,7 +876,8 @@
                             <div class="item border-end">
                                 <div class="p-4">
                                     <a href="javascript:;">
-                                        <img style="object-fit: cover;" src="{{ asset($brand->brand_image) }}" class="img-fluid" alt="...">
+                                        <img style="object-fit: cover;" src="{{ asset($brand->brand_image) }}"
+                                            class="img-fluid" alt="...">
                                     </a>
                                 </div>
                             </div>
@@ -891,7 +904,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/01.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/01.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -911,7 +925,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/02.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/02.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -931,7 +946,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/03.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/03.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -951,7 +967,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/04.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/04.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -982,10 +999,12 @@
                                     <div class="bottom-product-img">
                                         <a href="{{ route('product.details', $product->slug) }}">
                                             @if ($product->product_thumbnail && $product->product_thumbnail != '' && $product->product_thumbnail != 'Null')
-                                                <img style="object-fit: cover;" src="{{ asset($product->product_thumbnail) }}" width="100"
-                                                    height="75" alt="" >
+                                                <img style="object-fit: cover;"
+                                                    src="{{ asset($product->product_thumbnail) }}" width="100"
+                                                    height="75" alt="">
                                             @else
-                                                <img style="object-fit: cover;" src="{{ asset('upload/no_image.jpg') }}"  width="100" height="75" alt="">
+                                                <img style="object-fit: cover;" src="{{ asset('upload/no_image.jpg') }}"
+                                                    width="100" height="75" alt="">
                                             @endif
                                         </a>
                                     </div>
@@ -1007,10 +1026,11 @@
                                         </div>
 
                                         @php
-                                            if ($product->discount_type == 1) {
-                                                $price_after_discount = $product->regular_price - $product->discount_price;
+                                           if ($product->discount_type == 1) {
+                                                $price_after_discount = $product->discount_price;
                                             } elseif ($product->discount_type == 2) {
-                                                $price_after_discount = $product->regular_price - ($product->regular_price * $product->discount_price) / 100;
+                                                $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                $price_after_discount = $product->regular_price - $discount_amount;
                                             }
                                         @endphp
 
@@ -1051,11 +1071,12 @@
                                     <div class="bottom-product-img">
                                         <a href="{{ route('product.details', $product->slug) }}">
                                             @if ($product->product_thumbnail && $product->product_thumbnail != '' && $product->product_thumbnail != 'Null')
-                                                <img style="object-fit: cover;" src="{{ asset($product->product_thumbnail) }}" width="100"
+                                                <img style="object-fit: cover;"
+                                                    src="{{ asset($product->product_thumbnail) }}" width="100"
                                                     alt="">
                                             @else
-                                                <img style="object-fit: cover;" src="{{ asset('upload/no_image.jpg') }}" width="100"
-                                                    alt="">
+                                                <img style="object-fit: cover;" src="{{ asset('upload/no_image.jpg') }}"
+                                                    width="100" alt="">
                                             @endif
                                         </a>
                                     </div>
@@ -1078,9 +1099,10 @@
 
                                         @php
                                             if ($product->discount_type == 1) {
-                                                $price_after_discount = $product->regular_price - $product->discount_price;
+                                                $price_after_discount = $product->discount_price;
                                             } elseif ($product->discount_type == 2) {
-                                                $price_after_discount = $product->regular_price - ($product->regular_price * $product->discount_price) / 100;
+                                                $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                $price_after_discount = $product->regular_price - $discount_amount;
                                             }
                                         @endphp
 
@@ -1120,7 +1142,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/13.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/13.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -1140,7 +1163,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/14.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/14.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -1160,7 +1184,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/15.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/15.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>
@@ -1180,7 +1205,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="bottom-product-img">
                                     <a href="/product/shop">
-                                        <img style="object-fit: cover;" src="{{ asset('frontend/assets/images/products/16.png') }}" width="100"
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset('frontend/assets/images/products/16.png') }}" width="100"
                                             alt="">
                                     </a>
                                 </div>

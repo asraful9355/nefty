@@ -91,9 +91,10 @@
                                                             </a>
                                                             @php
                                                                 if ($product->discount_type == 1) {
-                                                                    $price_after_discount = $product->regular_price - $product->discount_price;
+                                                                    $price_after_discount = $product->discount_price;
                                                                 } elseif ($product->discount_type == 2) {
-                                                                    $price_after_discount = $product->regular_price - ($product->regular_price * $product->discount_price) / 100;
+                                                                    $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                                    $price_after_discount = $product->regular_price - $discount_amount;
                                                                 }
                                                             @endphp
                                                             <div class="d-flex align-items-center">
@@ -160,27 +161,27 @@
                                 </div>
                                 <!-- <hr> -->
                                 <!-- <nav class="d-flex justify-content-between" aria-label="Page navigation">
-            <ul class="pagination">
-             <li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Prev</a>
-             </li>
-            </ul>
-            <ul class="pagination">
-             <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span>
-             </li>
-             <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">2</a>
-             </li>
-             <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">3</a>
-             </li>
-             <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">4</a>
-             </li>
-             <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">5</a>
-             </li>
-            </ul>
-            <ul class="pagination">
-             <li class="page-item"><a class="page-link" href="javascript:;" aria-label="Next">Next <i class='bx bx-chevron-right'></i></a>
-             </li>
-            </ul>
-           </nav> -->
+                <ul class="pagination">
+                 <li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Prev</a>
+                 </li>
+                </ul>
+                <ul class="pagination">
+                 <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span>
+                 </li>
+                 <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">2</a>
+                 </li>
+                 <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">3</a>
+                 </li>
+                 <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">4</a>
+                 </li>
+                 <li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">5</a>
+                 </li>
+                </ul>
+                <ul class="pagination">
+                 <li class="page-item"><a class="page-link" href="javascript:;" aria-label="Next">Next <i class='bx bx-chevron-right'></i></a>
+                 </li>
+                </ul>
+               </nav> -->
                             </div>
                         </div>
                     </div>

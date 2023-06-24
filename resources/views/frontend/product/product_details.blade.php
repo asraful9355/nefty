@@ -21,8 +21,9 @@
                                         </li>
                                         <li class="breadcrumb-item"><a href="/product/shop">দোকান</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('product.childcategory', $product->subsubcategory->slug) }}">{{ $product->subsubcategory->sub_subcategory_name_bn ?? 'NULL' }}</a>
-                                             </li>
+                                        <li class="breadcrumb-item active" aria-current="page"><a
+                                                href="{{ route('product.childcategory', $product->subsubcategory->slug) }}">{{ $product->subsubcategory->sub_subcategory_name_bn ?? 'NULL' }}</a>
+                                        </li>
                                     </ol>
                                 @else
                                     <ol class="breadcrumb mb-0 p-0">
@@ -32,8 +33,9 @@
                                         </li>
                                         <li class="breadcrumb-item"><a href="/product/shop">Shop</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('product.childcategory', $product->subsubcategory->slug) }}">{{ $product->subsubcategory->sub_subcategory_name_en ?? 'NULL' }}</a>
-                                            </li>
+                                        <li class="breadcrumb-item active" aria-current="page"><a
+                                                href="{{ route('product.childcategory', $product->subsubcategory->slug) }}">{{ $product->subsubcategory->sub_subcategory_name_en ?? 'NULL' }}</a>
+                                        </li>
                                     </ol>
                                 @endif
                             </nav>
@@ -99,11 +101,13 @@
 
                                             if ($product->discount_price > 0) {
                                                 if ($product->discount_type == 1) {
-                                                    $discount = $product->discount_price;
-                                                    $amount = $product->regular_price - $discount;
+                                                    $diff = $product->regular_price - $product->discount_price;
+                                                    $percentage = ($diff / $product->regular_price) * 100;
+                                                    $amount = $product->discount_price;
                                                 } elseif ($product->discount_type == 2) {
-                                                    $discount = ($product->regular_price * $product->discount_price) / 100;
-                                                    $amount = $product->regular_price - $discount;
+                                                    $discount_amount = ($product->discount_price / 100) * $product->regular_price;
+                                                    $discounted_price = $product->regular_price - $discount_amount;
+                                                    $amount = $discounted_price;
                                                 } else {
                                                     $amount = $product->regular_price;
                                                 }
@@ -117,19 +121,24 @@
                                             </div>
                                         @else
                                             <div class="d-flex align-items-center mt-3 gap-2">
-                                                <span class="text-white fs-5">৳{{ $amount }}</span>
                                                 @if ($product->discount_type == 1)
-                                                    <span class="save-price font-md color3 ml-15"> ৳{{ $discount }} Off
+                                                    <span class="text-white fs-5">৳{{ $product->discount_price }}</span>
+                                                    <span class="save-price font-md color3 ml-15">
+                                                        ৳{{ round($percentage) }} % Off
                                                     </span>
+                                                    <h5 class="mb-0 text-decoration-line-through text-light-3">
+                                                        ৳{{ $product->regular_price }}</h5>
                                                 @elseif ($product->discount_type == 2)
-                                                    <span class="save-price font-md color3 ml-15">{{ $discount }}%
-                                                        Off</span>
+                                                    <span class="text-white fs-5">৳{{ $discounted_price }}</span>
+                                                    <span class="save-price font-md color3 ml-15">
+                                                        ৳{{ $product->discount_price }} % Off
+                                                    </span>
+                                                    <h5 class="mb-0 text-decoration-line-through text-light-3">
+                                                        ৳{{ $product->regular_price }}</h5>
                                                 @endif
-                                                <h5 class="mb-0 text-decoration-line-through text-light-3">
-                                                    ৳{{ $product->regular_price }}</h5>
+
                                             </div>
                                         @endif
-
                                         <div class="mt-3">
                                             <h6>Discription :</h6>
                                             <p class="mb-0">
@@ -178,6 +187,8 @@
                                             @endif
                                         </div>
                                         <!--end row-->
+
+
                                         <div class="d-flex gap-2 mt-3">
                                             <input type="hidden" id="product_id" value="{{ $product->id }}"
                                                 min="1">
@@ -240,12 +251,12 @@
                                 </a>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
-                           <a class="nav-link" data-bs-toggle="tab" href="#more-info" role="tab" aria-selected="false">
-                            <div class="d-flex align-items-center">
-                             <div class="tab-title text-uppercase fw-500">More Info</div>
-                            </div>
-                           </a>
-                          </li> -->
+                                   <a class="nav-link" data-bs-toggle="tab" href="#more-info" role="tab" aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                     <div class="tab-title text-uppercase fw-500">More Info</div>
+                                    </div>
+                                   </a>
+                                  </li> -->
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" data-bs-toggle="tab" href="#tags" role="tab"
                                     aria-selected="false">
@@ -274,8 +285,8 @@
                                 </p>
                             </div>
                             <!-- <div class="tab-pane fade" id="more-info" role="tabpanel">
-                           <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-                          </div> -->
+                                   <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                                  </div> -->
                             <div class="tab-pane fade" id="tags" role="tabpanel">
                                 <div class="tags-box w-50">
                                     <a href="#" class="tag-link">{{ $product->tags }}</a>
@@ -435,12 +446,14 @@
                                             </div>
                                         </div>
                                         <a href="{{ route('product.details', $re_product->slug) }}">
-                                            <img style="object-fit: cover;" src="{{ asset($re_product->product_thumbnail) }}" class="card-img-top"
-                                            alt="..." >
+                                            <img style="object-fit: cover;"
+                                                src="{{ asset($re_product->product_thumbnail) }}" class="card-img-top"
+                                                alt="...">
                                         </a>
                                         <div class="card-body">
                                             <div class="product-info">
-                                                <a href="{{ route('product.childcategory', $re_product->subsubcategory->slug) }}">
+                                                <a
+                                                    href="{{ route('product.childcategory', $re_product->subsubcategory->slug) }}">
                                                     <p class="product-catergory font-13 mb-1">
                                                         @if (session()->get('language') == 'bangla')
                                                             {{ $re_product->subsubcategory->sub_subcategory_name_bn }}
@@ -459,6 +472,14 @@
                                                     </h6>
                                                 </a>
                                                 <div class="d-flex align-items-center">
+                                                    @php
+                                                        if ($re_product->discount_type == 1) {
+                                                            $price_after_discount = $re_product->discount_price;
+                                                        } elseif ($re_product->discount_type == 2) {
+                                                            $discount_amount = ($re_product->discount_price / 100) * $re_product->regular_price;
+                                                            $price_after_discount = $re_product->regular_price - $discount_amount;
+                                                        }
+                                                    @endphp
                                                     @if ($re_product->discount_price == null)
                                                         <div class="mb-1 product-price">
                                                             <span
@@ -467,9 +488,9 @@
                                                     @else
                                                         <div class="mb-1 product-price">
                                                             <span
-                                                                class="me-1 text-decoration-line-through">৳{{ $re_product->discount_price }}</span>
+                                                                class="me-1 text-decoration-line-through">৳{{ $re_product->regular_price }}</span>
                                                             <span
-                                                                class="text-white fs-5">৳{{ $re_product->regular_price }}</span>
+                                                                class="text-white fs-5">৳{{ $price_after_discount }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="cursor-pointer ms-auto"><span>5.0</span> <i
@@ -492,10 +513,6 @@
                                                         <a href="javascript:;" class="btn btn-light btn-ecomm"
                                                             onclick="addToCart()">
                                                             <i class='bx bxs-cart-add'></i>Add to Cart
-                                                        </a>
-
-                                                        <a href="javascript:;" class="btn btn-link btn-ecomm">
-                                                            <i class='bx bx-zoom-in'></i>Quick View
                                                         </a>
                                                     </div>
                                                 </div>
