@@ -7,20 +7,35 @@
             <section class="py-3 border-bottom d-none d-md-flex">
                 <div class="container">
                     <div class="page-breadcrumb d-flex align-items-center">
-                        <h3 class="breadcrumb-title pe-3">Order</h3>
+                        @if (session()->get('language') == 'bangla')
+                            <h3 class="breadcrumb-title pe-3">অর্ডার</h3>
+                        @else
+                            <h3 class="breadcrumb-title pe-3">Order</h3>
+                        @endif
                         <div class="ms-auto">
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item">
-                                        <a href="{{ route('home') }}">
-                                            <i class="bx bx-home-alt"></i>
-                                            Home
-                                        </a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Order List</li>
-                                </ol>
+                                @if (session()->get('language') == 'bangla')
+                                    <ol class="breadcrumb mb-0 p-0">
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                    class="bx bx-home-alt"></i>হোম</a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="/product/shop">দোকান</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('user.orders.index') }}">অর্ডার তালিকা </a>
+                                            </li>
+                                    </ol>
+                                @else
+                                    <ol class="breadcrumb mb-0 p-0">
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
+                                                    class="bx bx-home-alt"></i>
+                                                Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="/product/shop">Shop</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('user.orders.index') }}">Order List</a>
+                                        </li>
+                                    </ol>
+                                @endif
                             </nav>
                         </div>
                     </div>

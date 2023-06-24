@@ -6,14 +6,17 @@
         <section class="py-3 border-bottom d-none d-md-flex">
             <div class="container">
                 <div class="page-breadcrumb d-flex align-items-center">
-                    <h3 class="breadcrumb-title pe-3">My Orders</h3>
+                    <h3 class="breadcrumb-title pe-3">My Account</h3>
                     <div class="ms-auto">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i> Home</a>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="bx bx-home-alt"></i>
+                                        Home</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">My Orders</li>
+                                <li class="breadcrumb-item"><a href="{{ route('user.profile.index') }}">Account</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page"><a
+                                        href="{{ route('dashboard') }}">My Dashboard</a> </li>
                             </ol>
                         </nav>
                     </div>
