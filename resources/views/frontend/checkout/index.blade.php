@@ -90,12 +90,18 @@
                                                                 <input type="text" name="name"
                                                                     value="{{ Auth::user()->name ?? '' }}"
                                                                     class="form-control rounded-0">
+                                                                    @error('name')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Phone:</label>
                                                                 <input type="text" name="phone"
                                                                     value="{{ Auth::user()->phone ?? '' }}"
                                                                     class="form-control rounded-0">
+                                                                    @error('phone')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -104,6 +110,9 @@
                                                                 <input type="email" name="email"
                                                                     value="{{ Auth::user()->email ?? '' }}"
                                                                     class="form-control rounded-0">
+                                                                    @error('email')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label class="form-label"
@@ -115,6 +124,9 @@
                                                                         <option value="{{ $division->id }}">
                                                                             {{ ucwords($division->division_name) }}</option>
                                                                     @endforeach
+                                                                    @error('division_id')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -126,6 +138,9 @@
                                                                     class="form-select rounded-0" required="">
                                                                     <option selected="" value="">Select District
                                                                     </option>
+                                                                    @error('district_id')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6">
@@ -135,6 +150,9 @@
                                                                     class="form-select rounded-0" required="">
                                                                     <option selected="" value="">Select Upazilla
                                                                     </option>
+                                                                    @error('upazilla_id')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -142,6 +160,9 @@
                                                             <div class="col-md-12">
                                                                 <label class="form-label">Address:</label>
                                                                 <textarea class="form-control rounded-0" name="address"></textarea>
+                                                                @error('address')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
                                                             </div>
                                                         </div>
                                                         <div class="row">

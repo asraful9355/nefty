@@ -104,6 +104,14 @@ class CheckoutController extends Controller
     /* ============= Start Checkout Store Method ============== */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'phone' => 'required',
+            'email' => 'required',
+            'division_id' => 'required',
+            'district_id' => 'required',
+            'upazilla_id' => 'required',
+            'address' => 'required',
+        ]);
         $carts = Cart::content();
         // dd($carts);
         // dd($request->all(), $carts);

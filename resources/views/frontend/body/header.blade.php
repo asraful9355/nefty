@@ -252,7 +252,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-large-menu">
                                 @php
-                                    $subcategories = App\Models\SubCategory::where('category_id', $category->id)
+                                    $subcategories = App\Models\Subcategory::where('category_id', $category->id)
                                         ->orderBy('subcategory_name_en', 'ASC')
                                         ->get();
                                 @endphp
@@ -268,7 +268,7 @@
                                                 @endif
                                             </a>
                                             @php
-                                                $subsubcategories = App\Models\SubsubCategory::where('subcategory_id', $subcategory->id)
+                                                $subsubcategories = App\Models\Subsubcategory::where('subcategory_id', $subcategory->id)
                                                     ->orderBy('sub_subcategory_name_en', 'ASC')
                                                     ->get();
                                             @endphp
