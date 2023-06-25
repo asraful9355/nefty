@@ -28,13 +28,15 @@ class FrontendController extends Controller
     {
         $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
 
-        $latest_news = Blog::where('status', 1)->orderBy('id', 'DESC')->get();
+        $latest_news = Blog::where('status', 1)->orderBy('id', 'ASC')->get();
 
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
         $brands = Brand::where('status', 1)->orderBy('id', 'DESC')->get();
         $banners = Banner::where('status', 1)->orderBy('id', 'DESC')->get();
         $featured_category = Category::where('featured_category', 1)->orderBy('id', 'DESC')->get();
         $hot_deals = Product::where('status', 1)->where('is_deals', 1)->latest()->take(4)->get();
+
+
 
         $ashraful = User::all();
 
@@ -235,5 +237,7 @@ class FrontendController extends Controller
         return view('frontend.deals.featured', compact('products'));
 
     } // end method
+
+
 
 }

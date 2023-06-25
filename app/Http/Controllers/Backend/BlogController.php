@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use Image;
+use Session;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Image;
-use Session;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -65,6 +66,7 @@ class BlogController extends Controller
         $blog->blog_slug_en = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->blog_title_en)));
         $blog->status = $request->status;
         $blog->blog_image = $blog_image;
+        $blog->created_by = Auth::guard('admin')->user()->id;
         $blog->created_at = Carbon::now();
         $blog->save();
 
@@ -84,7 +86,7 @@ class BlogController extends Controller
 
     }
 
-    
+
     public function update(Request $request, $id)
     {
         $blog = Blog::find($id);

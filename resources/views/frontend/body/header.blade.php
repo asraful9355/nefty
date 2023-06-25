@@ -296,6 +296,16 @@
                             <!-- dropdown-large.// -->
                         </li>
                     @endforeach
+
+                    <li class="nav-item">
+                        <a href="{{ route('news.index') }}" class="nav-link">
+                            @if (session()->get('language') == 'bangla')
+                                নিউজ
+                            @else
+                                News
+                            @endif
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

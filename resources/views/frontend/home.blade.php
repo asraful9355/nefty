@@ -686,176 +686,53 @@
                 <hr />
                 <div class="product-grid">
                     <div class="latest-news owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="card rounded-0 product-card border">
-                                <div class="news-date">
-                                    <div class="date-number">24</div>
-                                    <div class="date-month">FEB</div>
-                                </div>
-                                <a href="javascript:;">
-                                    <img style="object-fit: cover;"
-                                        src="{{ asset('frontend/assets/images/blogs/01.png') }}"
-                                        class="card-img-top border-bottom bg-dark-1" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <div class="news-title">
+                        @forelse ($latest_news as $new)
+                            <div class="item">
+                                <div class="card rounded-0 product-card border">
+                                    <div class="news-date">
+                                        <div class="date-number">24</div>
+                                        <div class="date-month">FEB</div>
+                                    </div>
+                                    <a href="javascript:;">
+                                        <img style="object-fit: cover;"
+                                            src="{{ asset($new->blog_image) }}"
+                                            class="card-img-top border-bottom bg-dark-1" alt="...">
+                                    </a>
+                                    <div class="card-body">
+                                        <div class="news-title">
+                                            <a href="javascript:;">
+                                                @if (session()->get('language') == 'bangla')
+                                                <h5 class="mb-3 text-capitalize">{{ $new->blog_title_bn }}</h5>
+                                                @else
+                                                <h5 class="mb-3 text-capitalize">{{ $new->blog_title_en }}</h5>
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <p class="news-content mb-0">
+                                        @if (session()->get('language') == 'bangla')
+                                                <?php $b_name_bn = strip_tags(html_entity_decode($new->blog_description_bn)); ?>
+                                                {!! Str::limit($b_name_bn, $limit = 100, $end = '. . .') !!}
+                                            @else
+                                                <?php $b_name_en = strip_tags(html_entity_decode($new->blog_description_en)); ?>
+                                                {!! Str::limit($b_name_en, $limit = 100, $end = '. . .') !!}
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div class="card-footer border-top">
                                         <a href="javascript:;">
-                                            <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
+                                            <p class="mb-0"><small class="text-white">0 Comments</small>
+                                            </p>
                                         </a>
                                     </div>
-                                    <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <a href="javascript:;">
-                                        <p class="mb-0"><small class="text-white">0 Comments</small>
-                                        </p>
-                                    </a>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="card rounded-0 product-card border">
-                                <div class="news-date">
-                                    <div class="date-number">24</div>
-                                    <div class="date-month">FEB</div>
-                                </div>
-                                <a href="javascript:;">
-                                    <img style="object-fit: cover;"
-                                        src="{{ asset('frontend/assets/images/blogs/02.png') }}"
-                                        class="card-img-top border-bottom bg-dark-1" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <div class="news-title">
-                                        <a href="javascript:;">
-                                            <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                        </a>
-                                    </div>
-                                    <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <a href="javascript:;">
-                                        <p class="mb-0"><small class="text-white">0 Comments</small>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card rounded-0 product-card border">
-                                <div class="news-date">
-                                    <div class="date-number">24</div>
-                                    <div class="date-month">FEB</div>
-                                </div>
-                                <a href="javascript:;">
-                                    <img style="object-fit: cover;"
-                                        src="{{ asset('frontend/assets/images/blogs/03.png') }}"
-                                        class="card-img-top border-bottom bg-dark-1" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <div class="news-title">
-                                        <a href="javascript:;">
-                                            <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                        </a>
-                                    </div>
-                                    <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <a href="javascript:;">
-                                        <p class="mb-0"><small class="text-white">0 Comments</small>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card rounded-0 product-card border">
-                                <div class="news-date">
-                                    <div class="date-number">24</div>
-                                    <div class="date-month">FEB</div>
-                                </div>
-                                <a href="javascript:;">
-                                    <img style="object-fit: cover;"
-                                        src="{{ asset('frontend/assets/images/blogs/04.png') }}"
-                                        class="card-img-top border-bottom bg-dark-1" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <div class="news-title">
-                                        <a href="javascript:;">
-                                            <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                        </a>
-                                    </div>
-                                    <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <a href="javascript:;">
-                                        <p class="mb-0"><small class="text-white">0 Comments</small>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card rounded-0 product-card border">
-                                <div class="news-date">
-                                    <div class="date-number">24</div>
-                                    <div class="date-month">FEB</div>
-                                </div>
-                                <a href="javascript:;">
-                                    <img style="object-fit: cover;"
-                                        src="{{ asset('frontend/assets/images/blogs/05.png') }}"
-                                        class="card-img-top border-bottom bg-dark-1" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <div class="news-title">
-                                        <a href="javascript:;">
-                                            <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                        </a>
-                                    </div>
-                                    <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <a href="javascript:;">
-                                        <p class="mb-0"><small class="text-white">0 Comments</small>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card rounded-0 product-card border">
-                                <div class="news-date">
-                                    <div class="date-number">24</div>
-                                    <div class="date-month">FEB</div>
-                                </div>
-                                <a href="javascript:;">
-                                    <img style="object-fit: cover;"
-                                        src="{{ asset('frontend/assets/images/blogs/06.png') }}"
-                                        class="card-img-top border-bottom bg-dark-1" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <div class="news-title">
-                                        <a href="javascript:;">
-                                            <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                        </a>
-                                    </div>
-                                    <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                </div>
-                                <div class="card-footer border-top">
-                                    <a href="javascript:;">
-                                        <p class="mb-0"><small class="text-white">0 Comments</small>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
+                        @empty
+                            @if (session()->get('language') == 'bangla')
+                                <P class="text-danger">কোন নিউজ খুঁজে পাওয়া যায়নি</P>
+                            @else
+                                <P class="text-danger">No News Found</P>
+                            @endif
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -1026,7 +903,7 @@
                                         </div>
 
                                         @php
-                                           if ($product->discount_type == 1) {
+                                            if ($product->discount_type == 1) {
                                                 $price_after_discount = $product->discount_price;
                                             } elseif ($product->discount_type == 2) {
                                                 $discount_amount = ($product->discount_price / 100) * $product->regular_price;

@@ -21,6 +21,7 @@ class CreateBlogsTable extends Migration
             $table->text('blog_description_bn')->nullable();
             $table->text('blog_description_en')->nullable();
             $table->string('blog_image')->nullable();
+            $table->integer('created_by');
             $table->unsignedTinyInteger('status')->default(1)->comment('1=>Active, 0=>Inactive');
             $table->timestamps();
         });

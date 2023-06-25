@@ -73,7 +73,7 @@
                            </div>
                            <div class="col-md-12">
                               <div class="form-group">
-                                <label for="blog_description_bn">Description (English): <span class="text-danger">*</span></label>
+                                <label for="blog_description_bn">Description (Bangla): <span class="text-danger">*</span></label>
                                 <textarea name="blog_description_bn" id="blog_description_bn" cols="30" rows="7" class="form-control summernote" placeholder="Write Blog Bangla Description"></textarea>
                                 @error('blog_description_bn')
                                   <span class="text-danger">{{ $message }}</span>
